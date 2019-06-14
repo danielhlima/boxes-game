@@ -14,6 +14,8 @@
 		44897E6A22B3E9250090E44E /* GameState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44897E6822B3E9250090E44E /* GameState.cpp */; };
 		44897E6E22B3F5FE0090E44E /* InputHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44897E6C22B3F5FE0090E44E /* InputHandler.cpp */; };
 		44897E7222B3F6CD0090E44E /* Vector2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44897E7022B3F6CD0090E44E /* Vector2D.cpp */; };
+		44897E7622B403350090E44E /* TextureManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44897E7422B403350090E44E /* TextureManager.cpp */; };
+		44897E7822B40B890090E44E /* libSDL2_image-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 44897E7722B40B890090E44E /* libSDL2_image-2.0.0.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,6 +44,9 @@
 		44897E6D22B3F5FE0090E44E /* InputHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = InputHandler.hpp; sourceTree = "<group>"; };
 		44897E7022B3F6CD0090E44E /* Vector2D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vector2D.cpp; sourceTree = "<group>"; };
 		44897E7122B3F6CD0090E44E /* Vector2D.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Vector2D.hpp; sourceTree = "<group>"; };
+		44897E7422B403350090E44E /* TextureManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextureManager.cpp; sourceTree = "<group>"; };
+		44897E7522B403350090E44E /* TextureManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextureManager.hpp; sourceTree = "<group>"; };
+		44897E7722B40B890090E44E /* libSDL2_image-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2_image-2.0.0.dylib"; path = "../../../../../../usr/local/Cellar/sdl2_image/2.0.4/lib/libSDL2_image-2.0.0.dylib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44897E7822B40B890090E44E /* libSDL2_image-2.0.0.dylib in Frameworks */,
 				44897E5F22B3C7990090E44E /* libSDL2-2.0.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,6 +82,7 @@
 		44897E5522B3C7570090E44E /* BoxesGame */ = {
 			isa = PBXGroup;
 			children = (
+				44897E7322B4030D0090E44E /* TextureManager */,
 				44897E6B22B3F5E20090E44E /* Input */,
 				44897E6322B3D8600090E44E /* FiniteGameStateMachine */,
 				44897E5622B3C7570090E44E /* main.cpp */,
@@ -88,6 +95,7 @@
 		44897E5D22B3C7990090E44E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				44897E7722B40B890090E44E /* libSDL2_image-2.0.0.dylib */,
 				44897E5E22B3C7990090E44E /* libSDL2-2.0.0.dylib */,
 			);
 			name = Frameworks;
@@ -129,6 +137,15 @@
 				44897E7122B3F6CD0090E44E /* Vector2D.hpp */,
 			);
 			name = MouseStuff;
+			sourceTree = "<group>";
+		};
+		44897E7322B4030D0090E44E /* TextureManager */ = {
+			isa = PBXGroup;
+			children = (
+				44897E7422B403350090E44E /* TextureManager.cpp */,
+				44897E7522B403350090E44E /* TextureManager.hpp */,
+			);
+			name = TextureManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,6 +211,7 @@
 				44897E5722B3C7570090E44E /* main.cpp in Sources */,
 				44897E6E22B3F5FE0090E44E /* InputHandler.cpp in Sources */,
 				44897E6222B3CBC10090E44E /* Game.cpp in Sources */,
+				44897E7622B403350090E44E /* TextureManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,6 +314,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/Cellar/sdl2/2.0.9_1/lib,
+					/usr/local/Cellar/sdl2_image/2.0.4/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -308,6 +327,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/Cellar/sdl2/2.0.9_1/lib,
+					/usr/local/Cellar/sdl2_image/2.0.4/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

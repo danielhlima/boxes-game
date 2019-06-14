@@ -9,6 +9,7 @@
 #include "Game.hpp"
 #include <iostream>
 #include "InputHandler.hpp"
+#include "TextureManager.hpp"
 
 using namespace std;
 
@@ -98,13 +99,13 @@ void Game::clean()
 {
     cout<<"Cleaning the game"<<endl;
 
-    //    InputHandler::Instance()->clean();
+    
     
     m_pGameStateMachine->clean();
     m_pGameStateMachine = NULL;
     delete m_pGameStateMachine;
     
-    //TextureManager
+    TextureManager::Instance()->clearTextureMap();
     
     SDL_DestroyWindow(m_pWindow);
     SDL_DestroyRenderer(m_pRenderer);
