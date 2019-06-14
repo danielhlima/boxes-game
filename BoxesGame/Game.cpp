@@ -8,6 +8,7 @@
 
 #include "Game.hpp"
 #include <iostream>
+#include "InputHandler.hpp"
 
 using namespace std;
 
@@ -41,7 +42,7 @@ bool Game::init()
         {
             cout<<"Window creation success"<<endl;
             
-            m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, SDL_RENDERER_ACCELERATED);
+            m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
             
             if(m_pRenderer != 0)
             {
@@ -90,7 +91,7 @@ void Game::update()
 
 void Game::handleEvents()
 {
-    //InputHandler
+    InputHandler::Instance()->update();
 }
 
 void Game::clean()

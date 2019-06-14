@@ -36,10 +36,6 @@ int main(int argc, const char * argv[]) {
             {
                 SDL_Delay((int)(DELAY_TIME - frameTime));
             }
-            
-            
-//            SDL_Delay(10000);
-//            Game::Instance()->m_bRunning = false;
         }
     }
     else

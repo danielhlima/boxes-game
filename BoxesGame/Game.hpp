@@ -6,8 +6,7 @@
 //  Copyright © 2019 Daniel Lima. All rights reserved.
 //
 
-#ifndef Game_hpp
-#define Game_hpp
+#pragma once
 
 #include <SDL2/SDL.h>
 #include <vector>
@@ -90,5 +89,3 @@ private:
     Game(const Game&);
     Game& operator=(const Game&);
 };
-
-#endif /* Game_hpp */
