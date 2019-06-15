@@ -50,7 +50,7 @@ bool SoundManager::load(std::string fileName, std::string id, sound_type type)
 
 void SoundManager::playMusic(std::string id, int loop)
 {
-    Mix_PlayMusic(m_music[id], loop);
+//    Mix_PlayMusic(m_music[id], loop);
 }
 
 void SoundManager::playSound(std::string id, int loop)

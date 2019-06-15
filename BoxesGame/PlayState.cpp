@@ -18,6 +18,8 @@
 
 const std::string PlayState::s_playID = "PLAY";
 
+
+
 void PlayState::update()
 {
     if(m_loadingComplete && !m_exiting)
@@ -29,7 +31,7 @@ void PlayState::update()
         }
     }
     
-    if(!m_gameObjects.empty() && m_loadingComplete && !m_exiting)
+    if(!m_gameObjects.empty() && m_loadingComplete && !m_exiting && !isUpdating())
     {
         for(int i=0; i<m_gameObjects.size(); i++)
         {
@@ -37,6 +39,18 @@ void PlayState::update()
             {
                 m_gameObjects[i]->update();
             }
+        }
+    }
+    
+    
+    
+    if(!isUpdating())
+    {
+        neighbours = getNeighbours(0, 0);
+        
+        if(neighbours.size() > 0)
+        {
+            updateMatrix();
         }
     }
 }
@@ -71,21 +85,8 @@ bool PlayState::onEnter()
     
     
     m_gameObjects.push_back(backgroundImage);
-    
-    srand (time(NULL));
-    
-    for(int i=0; i<COLS; i++)
-    {
-        for(int j=0; j<ROWS; j++)
-        {
-            GameObject* box = NULL;
-            box = new Box(new LoaderParams(INITIAL_X_POSITION+i*100, INITIAL_Y_POSITION+j*75, 100, 75, "caixa_sprite", 1, rand() % 7, 0, 0));
-            m_gameObjects.push_back(box);
-        }
-    }
-    
-    
-    
+
+    buildMatrix();
     
     SoundManager::Instance()->stopTheMusic();
     SoundManager::Instance()->load("assets/sounds/Matt_s_Blues.ogg", "theme2", SOUND_MUSIC);
@@ -93,6 +94,7 @@ bool PlayState::onEnter()
     
     
     m_loadingComplete = true;
+    updating = false;
     std::cout<<"Entering PlayState"<<std::endl;
     
     return true;
@@ -118,21 +120,86 @@ bool PlayState::onExit()
 
 bool PlayState::withinGrid(int colNum, int rowNum)
 {
+    if((colNum < 0) || (rowNum <0) ) {
+        return false;
+    }
+    
+    if((colNum >= COLS) || (rowNum >= ROWS)) {
+        return false;
+    }
+    
     return true;
 }
 void PlayState::buildMatrix()
 {
+    srand (time(NULL));
     
+    for(int i=0; i<COLS; i++)
+    {
+        for(int j=0; j<ROWS; j++)
+        {
+            if((i == 0 && j == 0) ||
+               (i == 0 && j == 1) ||
+               (i == 1 && j == 0))
+            {
+                matrix[j][i] = new Box(new LoaderParams(INITIAL_X_POSITION+i*100, INITIAL_Y_POSITION+j*75, 100, 75, "caixa_sprite", 1, 0, 0, 0));
+                m_gameObjects.push_back(matrix[j][i]);
+            }
+            else
+            {
+                matrix[j][i] = new Box(new LoaderParams(INITIAL_X_POSITION+i*100, INITIAL_Y_POSITION+j*75, 100, 75, "caixa_sprite", 1, rand() % 7, 0, 0));
+                m_gameObjects.push_back(matrix[j][i]);
+            }
+        }
+    }
 }
 
 std::vector<GameObject*> PlayState::getNeighbours(int  row, int col)
 {
+    for (int colNum = col-1; colNum <= (col+1); colNum+=1)
+    {
+        for (int rowNum = row-1;rowNum <= (row+1); rowNum +=1)
+        {
+            if(!((colNum == col) && (rowNum == row)))
+            {
+                if(withinGrid(colNum, rowNum))
+                {
+                    if((colNum == (col+1) && rowNum == row) ||
+                       (colNum == col && rowNum == (row+1)) ||
+                       (colNum == (col-1) && rowNum == row) ||
+                       (colNum == col && rowNum == (row-1))){
+                        if((matrix[rowNum][colNum])->getCurrentFrame() == (matrix[row][col])->getCurrentFrame())
+                        {
+                            
+                            if(!(std::find(neighbours.begin(), neighbours.end(), (matrix[rowNum][colNum])) != neighbours.end()))
+                                
+                            {
+                                neighbours.push_back((matrix[rowNum][colNum]));
+                                getNeighbours(rowNum, colNum);
+                            }
+                            
+                        }
+                        
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
+    }
     return PlayState::neighbours;
 }
 
 void PlayState::updateMatrix()
 {
-    
+    for(int i=0; i<neighbours.size(); i++)
+    {
+        neighbours[i]->setCurrentFrame(7);
+    }
+    neighbours.clear();
+    updating = true;
 }
 
 

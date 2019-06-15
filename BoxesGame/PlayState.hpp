@@ -29,11 +29,16 @@ public:
     virtual bool onEnter();
     virtual bool onExit();
     
+    bool isUpdating() { return updating; }
+    
     virtual std::string getStateID() const { return s_playID; }
     
 private:
     
     static const std::string s_playID;
+    bool updating;
+    
+    GameObject* matrix[ROWS][COLS];
     
     std::vector<GameObject*> neighbours;
     

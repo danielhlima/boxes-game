@@ -36,6 +36,16 @@ public:
         return m_height;
     }
     
+    int getCurrentFrame()
+    {
+        return m_currentFrame;
+    }
+    
+    void setCurrentFrame(int frame)
+    {
+        m_currentFrame = frame;
+    }
+    
 protected:
     
     GameObject(const LoaderParams* pParams){}
