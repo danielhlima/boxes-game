@@ -65,14 +65,27 @@ bool PlayState::onEnter()
         return false;
     }
     
+    srand(time(0));
+    
     GameObject* backgroundImage = new NPCObject(new LoaderParams(0, 0, 1024, 768, "background_game", 1, 0, 0, 0));
-    
-    GameObject* box = new Box(new LoaderParams(0, 100, 100, 75, "caixa_sprite", 1, 8, 0, 0));
-    
     
     
     m_gameObjects.push_back(backgroundImage);
-    m_gameObjects.push_back(box);
+    
+    srand (time(NULL));
+    
+    for(int i=0; i<COLS; i++)
+    {
+        for(int j=0; j<ROWS; j++)
+        {
+            GameObject* box = NULL;
+            box = new Box(new LoaderParams(INITIAL_X_POSITION+i*100, INITIAL_Y_POSITION+j*75, 100, 75, "caixa_sprite", 1, rand() % 7, 0, 0));
+            m_gameObjects.push_back(box);
+        }
+    }
+    
+    
+    
     
     SoundManager::Instance()->stopTheMusic();
     SoundManager::Instance()->load("assets/sounds/Matt_s_Blues.ogg", "theme2", SOUND_MUSIC);
@@ -112,7 +125,7 @@ void PlayState::buildMatrix()
     
 }
 
-std::vector<Box*> PlayState::getNeighbours(int  row, int col)
+std::vector<GameObject*> PlayState::getNeighbours(int  row, int col)
 {
     return PlayState::neighbours;
 }
