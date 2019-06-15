@@ -10,6 +10,12 @@
 
 #include <iostream>
 #include "PlayStateBase.hpp"
+#include "Box.hpp"
+
+int const ROWS = 6;
+int const COLS = 10;
+int const INITIAL_X_POSITION = 0;
+int const INITIAL_Y_POSITION = 100;
 
 class PlayState : public PlayStateBase
 {
@@ -29,11 +35,15 @@ private:
     
     static const std::string s_playID;
     
-//    bool withinGrid(int colNum, int rowNum);
-//    void buildMatrix();
-//    
-//    std::vector<GameObject*> neighbours(int  row, int col);
-//    void updateMatrix();
+    Box* matrix[ROWS][COLS] = {};
+    
+    std::vector<Box*> neighbours;
+    
+    bool withinGrid(int colNum, int rowNum);
+    void buildMatrix();
+    
+    std::vector<Box*> getNeighbours(int  row, int col);
+    void updateMatrix();
     
     
 };

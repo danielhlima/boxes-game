@@ -64,9 +64,9 @@ bool CreditState::onEnter()
     }
     
     
-    GameObject* creditoFundo = new NPCObject(new LoaderParams(0, 0, 1024, 768, "credito", 1, 0, 0));
+    GameObject* creditoFundo = new NPCObject(new LoaderParams(0, 0, 1024, 768, "credito", 1, 0, 0, 0));
     
-    GameObject* backButton = new MenuButton(new LoaderParams(806, 539, 200, 150, "back_button", 1, 1, 0));
+    GameObject* backButton = new MenuButton(new LoaderParams(806, 539, 200, 150, "back_button", 1, 0, 1, 0));
     
     m_gameObjects.push_back(creditoFundo);
     m_gameObjects.push_back(backButton);

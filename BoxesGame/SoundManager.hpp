@@ -1,5 +1,5 @@
 //
-//  SoundManager.h
+//  SoundManager.hpp
 ///  BoxesGame
 //
 //  Created by Daniel Lima on 14/06/19.

@@ -11,7 +11,7 @@
 #include "InputHandler.hpp"
 #include "TextureManager.hpp"
 #include "MainMenuState.hpp"
-#include "SoundManager.h"
+#include "SoundManager.hpp"
 
 using namespace std;
 

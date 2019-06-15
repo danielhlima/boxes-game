@@ -14,7 +14,7 @@
 #include "MenuButton.hpp"
 #include "NPCObject.hpp"
 #include "CreditState.hpp"
-#include "SoundManager.h"
+#include "SoundManager.hpp"
 #include "PlayState.hpp"
 
 const std::string MainMenuState::s_menuID = "MENU";
@@ -110,15 +110,15 @@ bool MainMenuState::onEnter()
         return false;
     }
     
-    GameObject* fundo = new NPCObject(new LoaderParams(0, 0, 1024, 768, "fundo", 1, 0, 0));
+    GameObject* fundo = new NPCObject(new LoaderParams(0, 0, 1024, 768, "fundo", 1, 0, 0, 0));
     
-    GameObject* playButton = new MenuButton(new LoaderParams(17, 539, 200, 150, "play_button", 1, 1, 0));
+    GameObject* playButton = new MenuButton(new LoaderParams(17, 539, 200, 150, "play_button", 1, 0, 1, 0));
     
-    GameObject* settingsButton = new MenuButton(new LoaderParams(280, 539, 200, 150, "settings_button", 1, 2, 0));
+    GameObject* settingsButton = new MenuButton(new LoaderParams(280, 539, 200, 150, "settings_button", 1, 0, 2, 0));
     
-    GameObject* creditsButton = new MenuButton(new LoaderParams(546, 539, 200, 150, "credits_button", 1, 3, 0));
+    GameObject* creditsButton = new MenuButton(new LoaderParams(546, 539, 200, 150, "credits_button", 1, 0, 3, 0));
     
-    GameObject* quitButton = new MenuButton(new LoaderParams(806, 539, 200, 150, "quit_button", 1, 4, 0));
+    GameObject* quitButton = new MenuButton(new LoaderParams(806, 539, 200, 150, "quit_button", 1, 0, 4, 0));
     
     m_gameObjects.push_back(fundo);
     m_gameObjects.push_back(playButton);

@@ -11,7 +11,10 @@
 #include "Game.hpp"
 #include "TextureManager.hpp"
 #include "NPCObject.hpp"
-#include "SoundManager.h"
+#include "SoundManager.hpp"
+#include <stdlib.h>
+#include <time.h>
+#include <algorithm>
 
 const std::string PlayState::s_playID = "PLAY";
 
@@ -57,9 +60,19 @@ bool PlayState::onEnter()
         return false;
     }
     
-    GameObject* backgroundImage = new NPCObject(new LoaderParams(0, 0, 1024, 768, "background_game", 1, 0, 0));
+    if(!TextureManager::Instance()->load("assets/game/caixa_sprite.png", "caixa_sprite", Game::Instance()->getRenderer()))
+    {
+        return false;
+    }
+    
+    GameObject* backgroundImage = new NPCObject(new LoaderParams(0, 0, 1024, 768, "background_game", 1, 0, 0, 0));
+    
+    GameObject* box = new Box(new LoaderParams(0, 100, 100, 75, "caixa_sprite", 1, 8, 0, 0));
+    
+    
     
     m_gameObjects.push_back(backgroundImage);
+    m_gameObjects.push_back(box);
     
     SoundManager::Instance()->stopTheMusic();
     SoundManager::Instance()->load("assets/sounds/Matt_s_Blues.ogg", "theme2", SOUND_MUSIC);
@@ -89,4 +102,24 @@ bool PlayState::onExit()
     std::cout<<"Exiting PlayState"<<std::endl;
     return true;
 }
+
+bool PlayState::withinGrid(int colNum, int rowNum)
+{
+    return true;
+}
+void PlayState::buildMatrix()
+{
+    
+}
+
+std::vector<Box*> PlayState::getNeighbours(int  row, int col)
+{
+    return PlayState::neighbours;
+}
+
+void PlayState::updateMatrix()
+{
+    
+}
+
 

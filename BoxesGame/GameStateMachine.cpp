@@ -8,7 +8,7 @@
 
 #include "GameStateMachine.hpp"
 #include <iostream>
-#include "SoundManager.h"
+#include "SoundManager.hpp"
 
 void GameStateMachine::clean()
 {

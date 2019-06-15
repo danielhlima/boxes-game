@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4463DEE022B556E40017CF58 /* PlayState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4463DEDE22B556E40017CF58 /* PlayState.cpp */; };
+		4463DEE322B56BAA0017CF58 /* Box.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4463DEE122B56BAA0017CF58 /* Box.cpp */; };
 		44897E5722B3C7570090E44E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44897E5622B3C7570090E44E /* main.cpp */; };
 		44897E5F22B3C7990090E44E /* libSDL2-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 44897E5E22B3C7990090E44E /* libSDL2-2.0.0.dylib */; };
 		44897E6222B3CBC10090E44E /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44897E6022B3CBC10090E44E /* Game.cpp */; };
@@ -39,6 +40,8 @@
 		4463DEDC22B553F70017CF58 /* PlayStateBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayStateBase.hpp; sourceTree = "<group>"; };
 		4463DEDE22B556E40017CF58 /* PlayState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayState.cpp; sourceTree = "<group>"; };
 		4463DEDF22B556E40017CF58 /* PlayState.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayState.hpp; sourceTree = "<group>"; };
+		4463DEE122B56BAA0017CF58 /* Box.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Box.cpp; sourceTree = "<group>"; };
+		4463DEE222B56BAA0017CF58 /* Box.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Box.hpp; sourceTree = "<group>"; };
 		44897E5322B3C7570090E44E /* BoxesGame */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BoxesGame; sourceTree = BUILT_PRODUCTS_DIR; };
 		44897E5622B3C7570090E44E /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		44897E5E22B3C7990090E44E /* libSDL2-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2-2.0.0.dylib"; path = "../../../../../../usr/local/Cellar/sdl2/2.0.9_1/lib/libSDL2-2.0.0.dylib"; sourceTree = "<group>"; };
@@ -65,7 +68,7 @@
 		44D0A94222B4AFA6006B7891 /* CreditState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CreditState.cpp; sourceTree = "<group>"; };
 		44D0A94322B4AFA6006B7891 /* CreditState.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CreditState.hpp; sourceTree = "<group>"; };
 		44D0A94522B4B905006B7891 /* libSDL2_mixer-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2_mixer-2.0.0.dylib"; path = "../../../../../../usr/local/Cellar/sdl2_mixer/2.0.4/lib/libSDL2_mixer-2.0.0.dylib"; sourceTree = "<group>"; };
-		44D0A94822B4BA95006B7891 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundManager.h; sourceTree = "<group>"; };
+		44D0A94822B4BA95006B7891 /* SoundManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SoundManager.hpp; sourceTree = "<group>"; };
 		44D0A94922B4BA95006B7891 /* SoundManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundManager.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -187,6 +190,8 @@
 				44897E7E22B40EBC0090E44E /* GameObject.hpp */,
 				44D0A93F22B4A1E5006B7891 /* NPCObject.cpp */,
 				44D0A94022B4A1E5006B7891 /* NPCObject.hpp */,
+				4463DEE122B56BAA0017CF58 /* Box.cpp */,
+				4463DEE222B56BAA0017CF58 /* Box.hpp */,
 			);
 			name = GameObjects;
 			sourceTree = "<group>";
@@ -194,7 +199,7 @@
 		44D0A94722B4BA3A006B7891 /* SoundManager */ = {
 			isa = PBXGroup;
 			children = (
-				44D0A94822B4BA95006B7891 /* SoundManager.h */,
+				44D0A94822B4BA95006B7891 /* SoundManager.hpp */,
 				44D0A94922B4BA95006B7891 /* SoundManager.cpp */,
 			);
 			name = SoundManager;
@@ -266,6 +271,7 @@
 				44897E6222B3CBC10090E44E /* Game.cpp in Sources */,
 				44D0A94122B4A1E5006B7891 /* NPCObject.cpp in Sources */,
 				44D0A94422B4AFA6006B7891 /* CreditState.cpp in Sources */,
+				4463DEE322B56BAA0017CF58 /* Box.cpp in Sources */,
 				44897E7622B403350090E44E /* TextureManager.cpp in Sources */,
 				44D0A94A22B4BA95006B7891 /* SoundManager.cpp in Sources */,
 			);
