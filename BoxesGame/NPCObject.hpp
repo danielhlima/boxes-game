@@ -18,7 +18,5 @@ public:
     virtual void draw();
     virtual void update();
     virtual void clean();
-
-    virtual std::string type() { return "NPCObject"; }
 };
 

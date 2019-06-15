@@ -17,6 +17,7 @@
 		44897E8522B4133B0090E44E /* MainMenuState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44897E8322B4133B0090E44E /* MainMenuState.cpp */; };
 		44D0A93E22B480CC006B7891 /* MenuButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44D0A93C22B480CC006B7891 /* MenuButton.cpp */; };
 		44D0A94122B4A1E5006B7891 /* NPCObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44D0A93F22B4A1E5006B7891 /* NPCObject.cpp */; };
+		44D0A94422B4AFA6006B7891 /* CreditState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44D0A94222B4AFA6006B7891 /* CreditState.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,6 +56,8 @@
 		44D0A93D22B480CC006B7891 /* MenuButton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MenuButton.hpp; sourceTree = "<group>"; };
 		44D0A93F22B4A1E5006B7891 /* NPCObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NPCObject.cpp; sourceTree = "<group>"; };
 		44D0A94022B4A1E5006B7891 /* NPCObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NPCObject.hpp; sourceTree = "<group>"; };
+		44D0A94222B4AFA6006B7891 /* CreditState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CreditState.cpp; sourceTree = "<group>"; };
+		44D0A94322B4AFA6006B7891 /* CreditState.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CreditState.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +130,8 @@
 				44897E8122B4125F0090E44E /* MenuState.hpp */,
 				44897E8322B4133B0090E44E /* MainMenuState.cpp */,
 				44897E8422B4133B0090E44E /* MainMenuState.hpp */,
+				44D0A94222B4AFA6006B7891 /* CreditState.cpp */,
+				44D0A94322B4AFA6006B7891 /* CreditState.hpp */,
 			);
 			name = GameStates;
 			sourceTree = "<group>";
@@ -235,6 +240,7 @@
 				44897E6E22B3F5FE0090E44E /* InputHandler.cpp in Sources */,
 				44897E6222B3CBC10090E44E /* Game.cpp in Sources */,
 				44D0A94122B4A1E5006B7891 /* NPCObject.cpp in Sources */,
+				44D0A94422B4AFA6006B7891 /* CreditState.cpp in Sources */,
 				44897E7622B403350090E44E /* TextureManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

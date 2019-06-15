@@ -22,7 +22,6 @@ public:
     
     void setCallback(void(*callback)()) { m_callback = callback;}
     int getCallbackID() { return m_callbackID; }
-    virtual std::string type() { return "MenuButtonObject"; }
     
 private:
     

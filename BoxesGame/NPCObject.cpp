@@ -22,7 +22,7 @@ NPCObject::NPCObject(const LoaderParams* pParams):GameObject(pParams)
 
 void NPCObject::draw()
 {
-    TextureManager::Instance()->draw("fundo", (Uint32)m_position.getX(), (Uint32)m_position.getY(), m_width, m_height, Game::Instance()->getRenderer(), SDL_FLIP_NONE);
+    TextureManager::Instance()->draw(m_textureID, (Uint32)m_position.getX(), (Uint32)m_position.getY(), m_width, m_height, Game::Instance()->getRenderer(), SDL_FLIP_NONE);
 }
 
 void NPCObject::update()
