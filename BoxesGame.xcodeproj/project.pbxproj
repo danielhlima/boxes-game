@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4463DEE022B556E40017CF58 /* PlayState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4463DEDE22B556E40017CF58 /* PlayState.cpp */; };
 		44897E5722B3C7570090E44E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44897E5622B3C7570090E44E /* main.cpp */; };
 		44897E5F22B3C7990090E44E /* libSDL2-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 44897E5E22B3C7990090E44E /* libSDL2-2.0.0.dylib */; };
 		44897E6222B3CBC10090E44E /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44897E6022B3CBC10090E44E /* Game.cpp */; };
@@ -35,6 +36,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4463DEDC22B553F70017CF58 /* PlayStateBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayStateBase.hpp; sourceTree = "<group>"; };
+		4463DEDE22B556E40017CF58 /* PlayState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayState.cpp; sourceTree = "<group>"; };
+		4463DEDF22B556E40017CF58 /* PlayState.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayState.hpp; sourceTree = "<group>"; };
 		44897E5322B3C7570090E44E /* BoxesGame */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BoxesGame; sourceTree = BUILT_PRODUCTS_DIR; };
 		44897E5622B3C7570090E44E /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		44897E5E22B3C7990090E44E /* libSDL2-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2-2.0.0.dylib"; path = "../../../../../../usr/local/Cellar/sdl2/2.0.9_1/lib/libSDL2-2.0.0.dylib"; sourceTree = "<group>"; };
@@ -140,6 +144,9 @@
 				44897E8422B4133B0090E44E /* MainMenuState.hpp */,
 				44D0A94222B4AFA6006B7891 /* CreditState.cpp */,
 				44D0A94322B4AFA6006B7891 /* CreditState.hpp */,
+				4463DEDC22B553F70017CF58 /* PlayStateBase.hpp */,
+				4463DEDE22B556E40017CF58 /* PlayState.cpp */,
+				4463DEDF22B556E40017CF58 /* PlayState.hpp */,
 			);
 			name = GameStates;
 			sourceTree = "<group>";
@@ -254,6 +261,7 @@
 				44897E8522B4133B0090E44E /* MainMenuState.cpp in Sources */,
 				44897E6622B3D8920090E44E /* GameStateMachine.cpp in Sources */,
 				44897E5722B3C7570090E44E /* main.cpp in Sources */,
+				4463DEE022B556E40017CF58 /* PlayState.cpp in Sources */,
 				44897E6E22B3F5FE0090E44E /* InputHandler.cpp in Sources */,
 				44897E6222B3CBC10090E44E /* Game.cpp in Sources */,
 				44D0A94122B4A1E5006B7891 /* NPCObject.cpp in Sources */,

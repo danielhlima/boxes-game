@@ -14,13 +14,15 @@
 #include "MenuButton.hpp"
 #include "NPCObject.hpp"
 #include "CreditState.hpp"
+#include "SoundManager.h"
+#include "PlayState.hpp"
 
 const std::string MainMenuState::s_menuID = "MENU";
 
 void MainMenuState::s_menuToPlay()
 {
-//    Game::Instance()->getStateMachine()->changeState(new PlayState());
     std::cout<<"Play state"<<std::endl;
+    Game::Instance()->getStateMachine()->changeState(new PlayState());
 }
 
 void MainMenuState::s_menuToSettings()
@@ -125,6 +127,8 @@ bool MainMenuState::onEnter()
     m_gameObjects.push_back(quitButton);
     
     setCallbacks(m_callbacks);
+    
+    SoundManager::Instance()->load("assets/sounds/menu_button_sound.ogg", "menu_button", SOUND_SFX);
     
     m_loadingComplete = true;
     std::cout<<"Entering MenuState"<<std::endl;

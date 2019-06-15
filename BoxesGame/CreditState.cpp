@@ -25,7 +25,7 @@ void CreditState::s_backToMainMenu()
 
 void CreditState::update()
 {
-    if(!m_gameObjects.empty())
+    if(!m_gameObjects.empty() && !m_exiting && m_loadingComplete)
     {
         for(int i=0; i<m_gameObjects.size(); i++)
         {
@@ -39,7 +39,7 @@ void CreditState::update()
 
 void CreditState::render()
 {
-    if (m_loadingComplete && !m_gameObjects.empty())
+    if (m_loadingComplete && !m_gameObjects.empty() && !m_exiting)
     {
         for(int i=0; i<m_gameObjects.size(); i++)
         {
