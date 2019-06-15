@@ -75,7 +75,7 @@ bool Game::init()
     
     // add some sound effects - TODO move to better place
     SoundManager::Instance()->load("assets/sounds/Da_Jazz_Blues.ogg", "theme1", SOUND_MUSIC);
-//    SoundManager::Instance()->load("assets/boom.wav", "explode", SOUND_SFX);
+    SoundManager::Instance()->load("assets/sounds/menu_button_sound.ogg", "menu_button", SOUND_SFX);
 //    SoundManager::Instance()->load("assets/phaser.wav", "shoot", SOUND_SFX);
 //    
     SoundManager::Instance()->playMusic("theme1", -1);

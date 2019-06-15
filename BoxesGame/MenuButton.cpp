@@ -8,6 +8,7 @@
 
 #include "MenuButton.hpp"
 #include "TextureManager.hpp"
+#include "SoundManager.h"
 #include "Game.hpp"
 #include "InputHandler.hpp"
 
@@ -37,6 +38,7 @@ void MenuButton::update()
         {
             if(m_callback != 0)
             {
+                SoundManager::Instance()->playSound("menu_button", 0);
                 m_callback();
             }
             
