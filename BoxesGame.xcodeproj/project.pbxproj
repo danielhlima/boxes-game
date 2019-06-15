@@ -18,6 +18,8 @@
 		44D0A93E22B480CC006B7891 /* MenuButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44D0A93C22B480CC006B7891 /* MenuButton.cpp */; };
 		44D0A94122B4A1E5006B7891 /* NPCObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44D0A93F22B4A1E5006B7891 /* NPCObject.cpp */; };
 		44D0A94422B4AFA6006B7891 /* CreditState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44D0A94222B4AFA6006B7891 /* CreditState.cpp */; };
+		44D0A94622B4B905006B7891 /* libSDL2_mixer-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 44D0A94522B4B905006B7891 /* libSDL2_mixer-2.0.0.dylib */; };
+		44D0A94A22B4BA95006B7891 /* SoundManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44D0A94922B4BA95006B7891 /* SoundManager.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -58,6 +60,9 @@
 		44D0A94022B4A1E5006B7891 /* NPCObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NPCObject.hpp; sourceTree = "<group>"; };
 		44D0A94222B4AFA6006B7891 /* CreditState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CreditState.cpp; sourceTree = "<group>"; };
 		44D0A94322B4AFA6006B7891 /* CreditState.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CreditState.hpp; sourceTree = "<group>"; };
+		44D0A94522B4B905006B7891 /* libSDL2_mixer-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2_mixer-2.0.0.dylib"; path = "../../../../../../usr/local/Cellar/sdl2_mixer/2.0.4/lib/libSDL2_mixer-2.0.0.dylib"; sourceTree = "<group>"; };
+		44D0A94822B4BA95006B7891 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundManager.h; sourceTree = "<group>"; };
+		44D0A94922B4BA95006B7891 /* SoundManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundManager.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44D0A94622B4B905006B7891 /* libSDL2_mixer-2.0.0.dylib in Frameworks */,
 				44897E7822B40B890090E44E /* libSDL2_image-2.0.0.dylib in Frameworks */,
 				44897E5F22B3C7990090E44E /* libSDL2-2.0.0.dylib in Frameworks */,
 			);
@@ -93,6 +99,7 @@
 		44897E5522B3C7570090E44E /* BoxesGame */ = {
 			isa = PBXGroup;
 			children = (
+				44D0A94722B4BA3A006B7891 /* SoundManager */,
 				44897E7922B40CE50090E44E /* GameObjects */,
 				44897E7322B4030D0090E44E /* TextureManager */,
 				44897E6B22B3F5E20090E44E /* Input */,
@@ -107,6 +114,7 @@
 		44897E5D22B3C7990090E44E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				44D0A94522B4B905006B7891 /* libSDL2_mixer-2.0.0.dylib */,
 				44897E7722B40B890090E44E /* libSDL2_image-2.0.0.dylib */,
 				44897E5E22B3C7990090E44E /* libSDL2-2.0.0.dylib */,
 			);
@@ -176,6 +184,15 @@
 			name = GameObjects;
 			sourceTree = "<group>";
 		};
+		44D0A94722B4BA3A006B7891 /* SoundManager */ = {
+			isa = PBXGroup;
+			children = (
+				44D0A94822B4BA95006B7891 /* SoundManager.h */,
+				44D0A94922B4BA95006B7891 /* SoundManager.cpp */,
+			);
+			name = SoundManager;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -242,6 +259,7 @@
 				44D0A94122B4A1E5006B7891 /* NPCObject.cpp in Sources */,
 				44D0A94422B4AFA6006B7891 /* CreditState.cpp in Sources */,
 				44897E7622B403350090E44E /* TextureManager.cpp in Sources */,
+				44D0A94A22B4BA95006B7891 /* SoundManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +363,7 @@
 					"$(inherited)",
 					/usr/local/Cellar/sdl2/2.0.9_1/lib,
 					/usr/local/Cellar/sdl2_image/2.0.4/lib,
+					/usr/local/Cellar/sdl2_mixer/2.0.4/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -358,6 +377,7 @@
 					"$(inherited)",
 					/usr/local/Cellar/sdl2/2.0.9_1/lib,
 					/usr/local/Cellar/sdl2_image/2.0.4/lib,
+					/usr/local/Cellar/sdl2_mixer/2.0.4/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

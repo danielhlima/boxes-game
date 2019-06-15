@@ -11,6 +11,7 @@
 #include "InputHandler.hpp"
 #include "TextureManager.hpp"
 #include "MainMenuState.hpp"
+#include "SoundManager.h"
 
 using namespace std;
 
@@ -70,6 +71,14 @@ bool Game::init()
     }
     
     //Everything initialized as expected
+    
+    
+    // add some sound effects - TODO move to better place
+    SoundManager::Instance()->load("assets/sounds/Da_Jazz_Blues.ogg", "theme1", SOUND_MUSIC);
+//    SoundManager::Instance()->load("assets/boom.wav", "explode", SOUND_SFX);
+//    SoundManager::Instance()->load("assets/phaser.wav", "shoot", SOUND_SFX);
+//    
+    SoundManager::Instance()->playMusic("theme1", -1);
     
     m_pGameStateMachine = new GameStateMachine();
     m_pGameStateMachine->changeState(new MainMenuState());
