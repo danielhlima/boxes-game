@@ -27,6 +27,15 @@ public:
         
     }
     
+    int getX() const { return m_x; }
+    int getY() const { return m_y; }
+    int getWidth() const { return m_width; }
+    int getHeight() const { return m_height; }
+    std::string getTextureID() const { return m_textureID; }
+    int getNumFrames() const { return m_numFrames; }
+    int getCallbackID() const { return m_callbackID; }
+    int getAnimSpeed() const { return m_animSpeed; }
+    
 private:
     
     int m_x;

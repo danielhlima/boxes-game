@@ -17,10 +17,6 @@ class GameObject
 {
 public:
     
-    virtual ~GameObject(){}
-    
-    virtual void load(std::unique_ptr<LoaderParams> const &pParams) = 0;
-    
     virtual void draw() =0;
     virtual void update() =0;
     virtual void clean() = 0;
@@ -41,7 +37,10 @@ public:
         return m_height;
     }
     
-private:
+protected:
+    
+    GameObject(const LoaderParams* pParams){}
+    virtual ~GameObject(){}
     
     Vector2D m_position;
     

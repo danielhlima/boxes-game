@@ -18,7 +18,7 @@ bool TextureManager::load(std::string fileName, std::string identificator, SDL_R
     
     if(pTempSurface == NULL)
     {
-        std::cout<<"Loading image problems: "<<IMG_GetError();
+        std::cout<<"Loading image problems: "<<IMG_GetError()<<std::endl;
         return false;
     }
     

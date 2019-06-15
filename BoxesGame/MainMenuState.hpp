@@ -34,6 +34,8 @@ private:
     
     static void s_menuToPlay();
     static void s_exitFromMenu();
+    static void s_menuToSettings();
+    static void s_menuToCredits();
     
     static const std::string s_menuID;
     

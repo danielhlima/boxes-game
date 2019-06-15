@@ -10,6 +10,7 @@
 #include <iostream>
 #include "InputHandler.hpp"
 #include "TextureManager.hpp"
+#include "MainMenuState.hpp"
 
 using namespace std;
 
@@ -37,7 +38,7 @@ bool Game::init()
     {
         cout<<"SDL Initialization success"<<endl;
         
-        m_pWindow = SDL_CreateWindow("The Boxes War", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, 0);
+        m_pWindow = SDL_CreateWindow("The Boxes War", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024, 768, 0);
         
         if(m_pWindow != 0)
         {
@@ -71,6 +72,7 @@ bool Game::init()
     //Everything initialized as expected
     
     m_pGameStateMachine = new GameStateMachine();
+    m_pGameStateMachine->changeState(new MainMenuState());
     
     m_bRunning = true;
     return true;
@@ -111,34 +113,4 @@ void Game::clean()
     SDL_DestroyRenderer(m_pRenderer);
     SDL_Quit();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
