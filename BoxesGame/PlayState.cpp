@@ -73,7 +73,7 @@ bool PlayState::onEnter()
         return false;
     }
     
-    if(!TextureManager::Instance()->load("assets/game/caixa_sprite.png", "caixa_sprite", Game::Instance()->getRenderer()))
+    if(!TextureManager::Instance()->load("assets/game/caixa_sprite_half.png", "caixa_sprite_half", Game::Instance()->getRenderer()))
     {
         return false;
     }
@@ -149,7 +149,7 @@ void PlayState::buildMatrix()
             {
                 frame = rand() % MAX_FRAMES_ENABLED;
             }
-                matrix[j][i] = new Box(new LoaderParams(INITIAL_X_POSITION+i*100, INITIAL_Y_POSITION+j*75, 100, 75, "caixa_sprite", 1, frame, 0, 0));
+                matrix[j][i] = new Box(new LoaderParams(INITIAL_X_POSITION+i*50, INITIAL_Y_POSITION+j*38, 50, 38, "caixa_sprite_half", 1, frame, 0, 0));
                 dynamic_cast<Box*>(matrix[j][i])->m_xIndex = j;
                 dynamic_cast<Box*>(matrix[j][i])->m_yIndex = i;
                 m_gameObjects.push_back(matrix[j][i]);
