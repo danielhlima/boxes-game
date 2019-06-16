@@ -47,6 +47,7 @@ private:
     
     std::vector<GameObject*> getNeighbours(int  row, int col);
     void updateMatrix();
-    
+    void reorganizeMatrix();
+    void columnDown(int indexX, int indexY);
     
 };

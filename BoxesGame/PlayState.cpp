@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <algorithm>
+#include <SDL2/SDL.h>
 
 const std::string PlayState::s_playID = "PLAY";
 
@@ -46,12 +47,19 @@ void PlayState::update()
     
     if(!isUpdating())
     {
-        neighbours = getNeighbours(0, 0);
+        neighbours = getNeighbours(4, 3);
         
         if(neighbours.size() > 0)
         {
+            SDL_Delay(1000);
             updateMatrix();
+            SDL_Delay(1000);
         }
+    }
+    else
+    {
+        reorganizeMatrix();
+        SDL_Delay(1000);
     }
 }
 
@@ -138,16 +146,24 @@ void PlayState::buildMatrix()
     {
         for(int j=0; j<ROWS; j++)
         {
-            if((i == 0 && j == 0) ||
-               (i == 0 && j == 1) ||
-               (i == 1 && j == 0))
+            if((i == 1 && j == 4) ||
+               (i == 2 && j == 4) ||
+               (i == 3 && j == 4) ||
+               (i == 4 && j == 4) ||
+               (i == 3 && j == 3) ||
+               (i == 3 && j == 5))
             {
                 matrix[j][i] = new Box(new LoaderParams(INITIAL_X_POSITION+i*100, INITIAL_Y_POSITION+j*75, 100, 75, "caixa_sprite", 1, 0, 0, 0));
+                dynamic_cast<Box*>(matrix[j][i])->m_xIndex = j;
+                dynamic_cast<Box*>(matrix[j][i])->m_yIndex = i;
+                
                 m_gameObjects.push_back(matrix[j][i]);
             }
             else
             {
                 matrix[j][i] = new Box(new LoaderParams(INITIAL_X_POSITION+i*100, INITIAL_Y_POSITION+j*75, 100, 75, "caixa_sprite", 1, rand() % 7, 0, 0));
+                dynamic_cast<Box*>(matrix[j][i])->m_xIndex = j;
+                dynamic_cast<Box*>(matrix[j][i])->m_yIndex = i;
                 m_gameObjects.push_back(matrix[j][i]);
             }
         }
@@ -198,8 +214,40 @@ void PlayState::updateMatrix()
     {
         neighbours[i]->setCurrentFrame(7);
     }
-    neighbours.clear();
     updating = true;
 }
 
+void PlayState::reorganizeMatrix()
+{
+    for(int i=0; i<neighbours.size(); i++)
+    {
+        Box* tempBox = dynamic_cast<Box*>(neighbours[i]);
+        int tRow = tempBox->m_xIndex;
+        int tCol = tempBox->m_yIndex;
+        
+        columnDown(tRow, tCol);
+    }
+    neighbours.clear();
+}
 
+void PlayState::columnDown(int indexX, int indexY)
+{
+    for(int i=indexX; i>=0; i--)
+    {
+        if(i == 0)
+        {
+            matrix[i][indexY]->setCurrentFrame(8);
+        }
+        else
+        {
+            (matrix[i][indexY])->setCurrentFrame((matrix[i-1][indexY])->getCurrentFrame());
+            int iTemp = i;
+            while((matrix[iTemp][indexY])->getCurrentFrame()==7)
+            {
+                iTemp--;
+                if(iTemp >= 0)
+                    (matrix[i][indexY])->setCurrentFrame((matrix[iTemp][indexY])->getCurrentFrame());
+            }
+        }
+    }
+}

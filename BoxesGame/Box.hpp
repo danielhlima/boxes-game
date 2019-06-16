@@ -22,9 +22,13 @@ public:
 
     void setCallback(void(*callback)()) { m_callback = callback;}
     int getCallbackID() { return m_callbackID; }
+    
+    int m_xIndex;
+    int m_yIndex;
 
 private:
 
+    
     bool m_bReleased;
     int m_callbackID;
     void (*m_callback)();
