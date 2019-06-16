@@ -305,11 +305,11 @@ void PlayState::checkLimitMatrix()
         if(matrix[0][0]->getCurrentFrame()!=8 ||
            matrix[0][0]->getCurrentFrame()!=7)
         {
-//            std::cout<<"Game Over"<<std::endl;
+
         }
         else
         {
-//            std::cout<<"Create random column"<<std::endl;
+
         }
     }
     
@@ -321,7 +321,6 @@ void PlayState::moveMatrix()
     frameTime = SDL_GetTicks() - frameStart;
     if(frameTime > VELOCITY_MATRIX)
     {
-        std::cout<<"Moving"<<std::endl;
         frameStart = SDL_GetTicks();
         for(int i=0; i<COLS; i++)
         {

@@ -37,6 +37,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		443C6F9922B6AF8800F8DDFA /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		4463DEDC22B553F70017CF58 /* PlayStateBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayStateBase.hpp; sourceTree = "<group>"; };
 		4463DEDE22B556E40017CF58 /* PlayState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayState.cpp; sourceTree = "<group>"; };
 		4463DEDF22B556E40017CF58 /* PlayState.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayState.hpp; sourceTree = "<group>"; };
@@ -86,9 +87,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		443C6F9822B6AF6600F8DDFA /* GameAssets */ = {
+			isa = PBXGroup;
+			children = (
+				443C6F9922B6AF8800F8DDFA /* assets */,
+			);
+			name = GameAssets;
+			sourceTree = "<group>";
+		};
 		44897E4A22B3C7570090E44E = {
 			isa = PBXGroup;
 			children = (
+				443C6F9822B6AF6600F8DDFA /* GameAssets */,
 				44897E5522B3C7570090E44E /* BoxesGame */,
 				44897E5422B3C7570090E44E /* Products */,
 				44897E5D22B3C7990090E44E /* Frameworks */,
