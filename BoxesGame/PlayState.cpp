@@ -48,8 +48,11 @@ void PlayState::update()
         verifyNeighbours(PlayState::b_x, PlayState::b_y);
     }
     
-    moveMatrix();
-    checkLimitMatrix();
+    if(!isUpdating())
+    {
+        moveMatrix();
+        checkLimitMatrix();
+    }
 }
 
 void PlayState::render()
@@ -141,8 +144,12 @@ void PlayState::buildMatrix()
     {
         for(int j=0; j<ROWS; j++)
         {
-
-                matrix[j][i] = new Box(new LoaderParams(INITIAL_X_POSITION+i*100, INITIAL_Y_POSITION+j*75, 100, 75, "caixa_sprite", 1, rand() % 3, 0, 0));
+            int frame = 8;
+            if(i>=INITIAL_COLUMN)
+            {
+                frame = rand() % MAX_FRAMES_ENABLED;
+            }
+                matrix[j][i] = new Box(new LoaderParams(INITIAL_X_POSITION+i*100, INITIAL_Y_POSITION+j*75, 100, 75, "caixa_sprite", 1, frame, 0, 0));
                 dynamic_cast<Box*>(matrix[j][i])->m_xIndex = j;
                 dynamic_cast<Box*>(matrix[j][i])->m_yIndex = i;
                 m_gameObjects.push_back(matrix[j][i]);
@@ -293,13 +300,26 @@ void PlayState::checkVoidColumn()
 
 void PlayState::checkLimitMatrix()
 {
+    if(matrix[0][0]->getPosition().getX() < 0)
+    {
+        if(matrix[0][0]->getCurrentFrame()!=8 ||
+           matrix[0][0]->getCurrentFrame()!=7)
+        {
+//            std::cout<<"Game Over"<<std::endl;
+        }
+        else
+        {
+//            std::cout<<"Create random column"<<std::endl;
+        }
+    }
+    
     
 }
 
 void PlayState::moveMatrix()
 {
     frameTime = SDL_GetTicks() - frameStart;
-    if(frameTime > 5000)
+    if(frameTime > VELOCITY_MATRIX)
     {
         std::cout<<"Moving"<<std::endl;
         frameStart = SDL_GetTicks();
@@ -307,8 +327,18 @@ void PlayState::moveMatrix()
         {
             for(int j=0; j<ROWS; j++)
             {
-                matrix[j][i]->getPosition().setX(matrix[j][i]->getPosition().getX()-100);
+                if((i+1)<COLS)
+                    matrix[j][i]->setCurrentFrame(matrix[j][i+1]->getCurrentFrame());
             }
         }
+        createRandomColumn();
+    }
+}
+
+void PlayState::createRandomColumn()
+{
+    for(int i=0; i<ROWS; i++)
+    {
+        matrix[i][COLS-1]->setCurrentFrame(rand() % MAX_FRAMES_ENABLED);
     }
 }
