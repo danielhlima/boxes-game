@@ -148,6 +148,11 @@ bool MainMenuState::onExit()
     m_gameObjects.clear();
     
     InputHandler::Instance()->reset();
+    TextureManager::Instance()->clearFromTextureMap("fundo");
+    TextureManager::Instance()->clearFromTextureMap("play_button");
+    TextureManager::Instance()->clearFromTextureMap("settings_button");
+    TextureManager::Instance()->clearFromTextureMap("credits_button");
+    TextureManager::Instance()->clearFromTextureMap("quit_button");
     
     std::cout<<"Exiting MenuState"<<std::endl;
     return true;

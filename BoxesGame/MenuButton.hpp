@@ -9,6 +9,10 @@
 #pragma once
 
 #include "GameObject.hpp"
+#include "TextureManager.hpp"
+#include "SoundManager.hpp"
+#include "Game.hpp"
+#include "InputHandler.hpp"
 
 class MenuButton : public GameObject
 {

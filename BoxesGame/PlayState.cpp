@@ -83,7 +83,9 @@ bool PlayState::onEnter()
     
     SoundManager::Instance()->stopTheMusic();
     SoundManager::Instance()->load("assets/sounds/Matt_s_Blues.ogg", "theme2", SOUND_MUSIC);
+    SoundManager::Instance()->load("assets/sounds/applause.ogg", "applause", SOUND_SFX);
     SoundManager::Instance()->playMusic("theme2", -1);
+    SoundManager::Instance()->playSound("applause", 0);
     
     PlayState::b_x = -1;
     PlayState::b_y = -1;
@@ -133,26 +135,11 @@ void PlayState::buildMatrix()
     {
         for(int j=0; j<ROWS; j++)
         {
-//            if((i == 1 && j == 4) ||
-//               (i == 2 && j == 4) ||
-//               (i == 3 && j == 4) ||
-//               (i == 4 && j == 4) ||
-//               (i == 3 && j == 3) ||
-//               (i == 3 && j == 5))
-//            {
-//                matrix[j][i] = new Box(new LoaderParams(INITIAL_X_POSITION+i*100, INITIAL_Y_POSITION+j*75, 100, 75, "caixa_sprite", 1, 0, 0, 0));
-//                dynamic_cast<Box*>(matrix[j][i])->m_xIndex = j;
-//                dynamic_cast<Box*>(matrix[j][i])->m_yIndex = i;
-//                
-//                m_gameObjects.push_back(matrix[j][i]);
-//            }
-//            else
-//            {
-                matrix[j][i] = new Box(new LoaderParams(INITIAL_X_POSITION+i*100, INITIAL_Y_POSITION+j*75, 100, 75, "caixa_sprite", 1, rand() % 4, 0, 0));
+
+                matrix[j][i] = new Box(new LoaderParams(INITIAL_X_POSITION+i*100, INITIAL_Y_POSITION+j*75, 100, 75, "caixa_sprite", 1, rand() % 7, 0, 0));
                 dynamic_cast<Box*>(matrix[j][i])->m_xIndex = j;
                 dynamic_cast<Box*>(matrix[j][i])->m_yIndex = i;
                 m_gameObjects.push_back(matrix[j][i]);
-//            }
         }
     }
 }
@@ -230,7 +217,8 @@ void PlayState::columnDown(int indexX, int indexY)
         {
             (matrix[i][indexY])->setCurrentFrame((matrix[i-1][indexY])->getCurrentFrame());
             int iTemp = i;
-            while((matrix[iTemp][indexY])->getCurrentFrame()==7)
+
+            while(iTemp >= 0 && (matrix[iTemp][indexY])->getCurrentFrame()==7)
             {
                 iTemp--;
                 if(iTemp >= 0)

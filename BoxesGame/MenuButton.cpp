@@ -7,10 +7,7 @@
 //
 
 #include "MenuButton.hpp"
-#include "TextureManager.hpp"
-#include "SoundManager.hpp"
-#include "Game.hpp"
-#include "InputHandler.hpp"
+
 
 MenuButton::MenuButton(const LoaderParams* pParams):GameObject(pParams)
 {
