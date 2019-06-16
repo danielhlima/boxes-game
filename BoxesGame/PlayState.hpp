@@ -11,10 +11,11 @@
 #include <iostream>
 #include "PlayStateBase.hpp"
 #include "Box.hpp"
+#include <SDL2/SDL.h>
 
 int const ROWS = 7;
 int const COLS = 12;
-int const INITIAL_X_POSITION = 0;
+int const INITIAL_X_POSITION = 800;
 int const INITIAL_Y_POSITION = 150;
 
 class PlayState : public PlayStateBase
@@ -39,6 +40,8 @@ public:
     static int b_x, b_y;
     static void boxChosen(int x, int y);
     
+    Uint32 frameStart, frameTime;
+    
 private:
     
     static const std::string s_playID;
@@ -55,4 +58,7 @@ private:
     void updateMatrix();
     void reorganizeMatrix();
     void columnDown(int indexX, int indexY);
+    void checkLimitMatrix();
+    void moveMatrix();
+    void checkVoidColumn();
 };

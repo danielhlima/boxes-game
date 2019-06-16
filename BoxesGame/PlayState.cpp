@@ -47,6 +47,9 @@ void PlayState::update()
     {
         verifyNeighbours(PlayState::b_x, PlayState::b_y);
     }
+    
+    moveMatrix();
+    checkLimitMatrix();
 }
 
 void PlayState::render()
@@ -84,6 +87,8 @@ bool PlayState::onEnter()
     SoundManager::Instance()->stopTheMusic();
     SoundManager::Instance()->load("assets/sounds/Matt_s_Blues.ogg", "theme2", SOUND_MUSIC);
     SoundManager::Instance()->load("assets/sounds/applause.ogg", "applause", SOUND_SFX);
+    SoundManager::Instance()->load("assets/sounds/crash_box.ogg", "crash", SOUND_SFX);
+    SoundManager::Instance()->load("assets/sounds/little_crash.ogg", "little_crash", SOUND_SFX);
     SoundManager::Instance()->playMusic("theme2", -1);
     SoundManager::Instance()->playSound("applause", 0);
     
@@ -92,6 +97,7 @@ bool PlayState::onEnter()
     
     m_loadingComplete = true;
     updating = false;
+    frameStart = SDL_GetTicks();
     std::cout<<"Entering PlayState"<<std::endl;
     
     return true;
@@ -136,7 +142,7 @@ void PlayState::buildMatrix()
         for(int j=0; j<ROWS; j++)
         {
 
-                matrix[j][i] = new Box(new LoaderParams(INITIAL_X_POSITION+i*100, INITIAL_Y_POSITION+j*75, 100, 75, "caixa_sprite", 1, rand() % 7, 0, 0));
+                matrix[j][i] = new Box(new LoaderParams(INITIAL_X_POSITION+i*100, INITIAL_Y_POSITION+j*75, 100, 75, "caixa_sprite", 1, rand() % 3, 0, 0));
                 dynamic_cast<Box*>(matrix[j][i])->m_xIndex = j;
                 dynamic_cast<Box*>(matrix[j][i])->m_yIndex = i;
                 m_gameObjects.push_back(matrix[j][i]);
@@ -188,6 +194,7 @@ void PlayState::updateMatrix()
     {
         neighbours[i]->setCurrentFrame(7);
     }
+    
     reorganizeMatrix();
 }
 
@@ -201,6 +208,10 @@ void PlayState::reorganizeMatrix()
         
         columnDown(tRow, tCol);
     }
+    if(neighbours.size() > 4)
+        SoundManager::Instance()->playSound("crash", 0);
+    else
+        SoundManager::Instance()->playSound("little_crash", 0);
     neighbours.clear();
     updating = false;
 }
@@ -238,6 +249,7 @@ void PlayState::verifyNeighbours(int x, int y)
         if(neighbours.size() > 0)
         {
             updateMatrix();
+            checkVoidColumn();
         }
         PlayState::b_y = -1;
         PlayState::b_x = -1;
@@ -249,4 +261,54 @@ void PlayState::boxChosen(int x, int y)
 {
     b_x = x;
     b_y = y;
+}
+
+void PlayState::checkVoidColumn()
+{
+    for(int i=COLS-1; i>=0; i--)
+    {
+        bool columnVoid = true;
+        for(int j=ROWS-1; j>=0; j--)
+        {
+            if(matrix[j][i]->getCurrentFrame()!=8 &&
+               matrix[j][i]->getCurrentFrame()!=7)
+            {
+                columnVoid = false;
+                continue;
+            }
+        }
+        if(columnVoid)
+        {
+            for(int k=i; k>0; k--)
+            {
+                for(int m=ROWS-1; m>=0; m--)
+                {
+                    matrix[m][k]->setCurrentFrame(matrix[m][k-1]->getCurrentFrame());
+                    matrix[m][k-1]->setCurrentFrame(8);
+                }
+            }
+        }
+    }
+}
+
+void PlayState::checkLimitMatrix()
+{
+    
+}
+
+void PlayState::moveMatrix()
+{
+    frameTime = SDL_GetTicks() - frameStart;
+    if(frameTime > 5000)
+    {
+        std::cout<<"Moving"<<std::endl;
+        frameStart = SDL_GetTicks();
+        for(int i=0; i<COLS; i++)
+        {
+            for(int j=0; j<ROWS; j++)
+            {
+                matrix[j][i]->getPosition().setX(matrix[j][i]->getPosition().getX()-100);
+            }
+        }
+    }
 }
