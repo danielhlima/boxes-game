@@ -19,7 +19,7 @@ int const INITIAL_X_POSITION = 0;
 int const INITIAL_Y_POSITION = 150;
 int const INITIAL_COLUMN = 15;
 int const VELOCITY_MATRIX = 4000;
-int const MAX_FRAMES_ENABLED = 6;
+int const MAX_FRAMES_ENABLED = 5;
 
 class PlayState : public PlayStateBase
 {
