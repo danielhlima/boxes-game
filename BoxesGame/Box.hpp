@@ -9,6 +9,7 @@
 #pragma once
 
 #include "GameObject.hpp"
+#include "PlayState.hpp"
 
 class Box : public GameObject
 {
@@ -19,17 +20,11 @@ public:
     virtual void draw();
     virtual void update();
     virtual void clean();
-
-    void setCallback(void(*callback)()) { m_callback = callback;}
-    int getCallbackID() { return m_callbackID; }
     
     int m_xIndex;
     int m_yIndex;
 
 private:
-
     
     bool m_bReleased;
-    int m_callbackID;
-    void (*m_callback)();
 };

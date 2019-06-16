@@ -19,7 +19,6 @@ Box::Box(const LoaderParams* pParams):GameObject(pParams)
     m_textureID = pParams->getTextureID();
     m_numFrames = pParams->getNumFrames();
     m_currentFrame = pParams->getCurrentFrame();
-    m_callbackID = pParams->getCallbackID();
 }
 
 void Box::draw()
@@ -36,11 +35,8 @@ void Box::update()
     {
         if(InputHandler::Instance()->getMouseButtonState(LEFT) && m_bReleased)
         {
-            if(m_callback != 0)
-            {
-                m_callback();
-            }
-            
+            if(this->getCurrentFrame() < 8)
+                PlayState::boxChosen(this->m_xIndex, this->m_yIndex);
             m_bReleased = false;
         }
         else if(!InputHandler::Instance()->getMouseButtonState(LEFT))

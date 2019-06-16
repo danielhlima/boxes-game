@@ -18,8 +18,8 @@
 #include <SDL2/SDL.h>
 
 const std::string PlayState::s_playID = "PLAY";
-
-
+int PlayState::b_x;
+int PlayState::b_y;
 
 void PlayState::update()
 {
@@ -43,23 +43,9 @@ void PlayState::update()
         }
     }
     
-    
-    
-    if(!isUpdating())
+    if(PlayState::b_x != -1 && PlayState::b_y != -1)
     {
-        neighbours = getNeighbours(4, 3);
-        
-        if(neighbours.size() > 0)
-        {
-            SDL_Delay(1000);
-            updateMatrix();
-            SDL_Delay(1000);
-        }
-    }
-    else
-    {
-        reorganizeMatrix();
-        SDL_Delay(1000);
+        verifyNeighbours(PlayState::b_x, PlayState::b_y);
     }
 }
 
@@ -76,7 +62,6 @@ void PlayState::render()
 
 bool PlayState::onEnter()
 {
-    
     if(!TextureManager::Instance()->load("assets/game/fundo_game.png", "background_game", Game::Instance()->getRenderer()))
     {
         return false;
@@ -100,6 +85,8 @@ bool PlayState::onEnter()
     SoundManager::Instance()->load("assets/sounds/Matt_s_Blues.ogg", "theme2", SOUND_MUSIC);
     SoundManager::Instance()->playMusic("theme2", -1);
     
+    PlayState::b_x = -1;
+    PlayState::b_y = -1;
     
     m_loadingComplete = true;
     updating = false;
@@ -146,26 +133,26 @@ void PlayState::buildMatrix()
     {
         for(int j=0; j<ROWS; j++)
         {
-            if((i == 1 && j == 4) ||
-               (i == 2 && j == 4) ||
-               (i == 3 && j == 4) ||
-               (i == 4 && j == 4) ||
-               (i == 3 && j == 3) ||
-               (i == 3 && j == 5))
-            {
-                matrix[j][i] = new Box(new LoaderParams(INITIAL_X_POSITION+i*100, INITIAL_Y_POSITION+j*75, 100, 75, "caixa_sprite", 1, 0, 0, 0));
+//            if((i == 1 && j == 4) ||
+//               (i == 2 && j == 4) ||
+//               (i == 3 && j == 4) ||
+//               (i == 4 && j == 4) ||
+//               (i == 3 && j == 3) ||
+//               (i == 3 && j == 5))
+//            {
+//                matrix[j][i] = new Box(new LoaderParams(INITIAL_X_POSITION+i*100, INITIAL_Y_POSITION+j*75, 100, 75, "caixa_sprite", 1, 0, 0, 0));
+//                dynamic_cast<Box*>(matrix[j][i])->m_xIndex = j;
+//                dynamic_cast<Box*>(matrix[j][i])->m_yIndex = i;
+//                
+//                m_gameObjects.push_back(matrix[j][i]);
+//            }
+//            else
+//            {
+                matrix[j][i] = new Box(new LoaderParams(INITIAL_X_POSITION+i*100, INITIAL_Y_POSITION+j*75, 100, 75, "caixa_sprite", 1, rand() % 4, 0, 0));
                 dynamic_cast<Box*>(matrix[j][i])->m_xIndex = j;
                 dynamic_cast<Box*>(matrix[j][i])->m_yIndex = i;
-                
                 m_gameObjects.push_back(matrix[j][i]);
-            }
-            else
-            {
-                matrix[j][i] = new Box(new LoaderParams(INITIAL_X_POSITION+i*100, INITIAL_Y_POSITION+j*75, 100, 75, "caixa_sprite", 1, rand() % 7, 0, 0));
-                dynamic_cast<Box*>(matrix[j][i])->m_xIndex = j;
-                dynamic_cast<Box*>(matrix[j][i])->m_yIndex = i;
-                m_gameObjects.push_back(matrix[j][i]);
-            }
+//            }
         }
     }
 }
@@ -214,7 +201,7 @@ void PlayState::updateMatrix()
     {
         neighbours[i]->setCurrentFrame(7);
     }
-    updating = true;
+    reorganizeMatrix();
 }
 
 void PlayState::reorganizeMatrix()
@@ -228,6 +215,7 @@ void PlayState::reorganizeMatrix()
         columnDown(tRow, tCol);
     }
     neighbours.clear();
+    updating = false;
 }
 
 void PlayState::columnDown(int indexX, int indexY)
@@ -250,4 +238,27 @@ void PlayState::columnDown(int indexX, int indexY)
             }
         }
     }
+}
+
+void PlayState::verifyNeighbours(int x, int y)
+{
+    if(!isUpdating())
+    {
+        updating = true;
+        neighbours = getNeighbours(x, y);
+        
+        if(neighbours.size() > 0)
+        {
+            updateMatrix();
+        }
+        PlayState::b_y = -1;
+        PlayState::b_x = -1;
+        updating = false;
+    }
+}
+
+void PlayState::boxChosen(int x, int y)
+{
+    b_x = x;
+    b_y = y;
 }

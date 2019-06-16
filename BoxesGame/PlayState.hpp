@@ -21,6 +21,7 @@ class PlayState : public PlayStateBase
 {
 public:
     
+    
     virtual ~PlayState(){}
     
     virtual void update();
@@ -32,6 +33,11 @@ public:
     bool isUpdating() { return updating; }
     
     virtual std::string getStateID() const { return s_playID; }
+    
+    void verifyNeighbours(int x, int y);
+    
+    static int b_x, b_y;
+    static void boxChosen(int x, int y);
     
 private:
     
@@ -49,5 +55,4 @@ private:
     void updateMatrix();
     void reorganizeMatrix();
     void columnDown(int indexX, int indexY);
-    
 };
