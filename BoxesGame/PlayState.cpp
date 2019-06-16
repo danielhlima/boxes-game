@@ -7,15 +7,8 @@
 //
 
 #include "PlayState.hpp"
-#include "InputHandler.hpp"
-#include "Game.hpp"
-#include "TextureManager.hpp"
-#include "NPCObject.hpp"
-#include "SoundManager.hpp"
-#include <stdlib.h>
-#include <time.h>
-#include <algorithm>
-#include <SDL2/SDL.h>
+
+
 
 const std::string PlayState::s_playID = "PLAY";
 int PlayState::b_x;
@@ -51,7 +44,6 @@ void PlayState::update()
     if(!isUpdating())
     {
         moveMatrix();
-        checkLimitMatrix();
     }
 }
 
@@ -300,20 +292,15 @@ void PlayState::checkVoidColumn()
 
 void PlayState::checkLimitMatrix()
 {
-    if(matrix[0][0]->getPosition().getX() < 0)
+    if(matrix[ROWS-1][0]->getCurrentFrame()!=8 &&
+       matrix[ROWS-1][0]->getCurrentFrame()!=7)
     {
-        if(matrix[0][0]->getCurrentFrame()!=8 ||
-           matrix[0][0]->getCurrentFrame()!=7)
-        {
-
-        }
-        else
-        {
-
-        }
+        Game::Instance()->getStateMachine()->changeState(new GameOverState());
     }
-    
-    
+    else
+    {
+        createRandomColumn();
+    }
 }
 
 void PlayState::moveMatrix()
@@ -330,7 +317,7 @@ void PlayState::moveMatrix()
                     matrix[j][i]->setCurrentFrame(matrix[j][i+1]->getCurrentFrame());
             }
         }
-        createRandomColumn();
+        checkLimitMatrix();
     }
 }
 

@@ -12,6 +12,15 @@
 #include "PlayStateBase.hpp"
 #include "Box.hpp"
 #include <SDL2/SDL.h>
+#include "InputHandler.hpp"
+#include "Game.hpp"
+#include "TextureManager.hpp"
+#include "NPCObject.hpp"
+#include "SoundManager.hpp"
+#include <stdlib.h>
+#include <time.h>
+#include <algorithm>
+#include "GameOverSatate.hpp"
 
 int const ROWS = 14;
 int const COLS = 50;
