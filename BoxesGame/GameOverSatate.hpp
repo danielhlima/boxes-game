@@ -19,6 +19,7 @@
 #include "MenuButton.hpp"
 #include "NPCObject.hpp"
 #include "SoundManager.hpp"
+#include "PlayState.hpp"
 
 class GameOverState : public MenuState
 {
@@ -40,6 +41,7 @@ private:
     
     static const std::string s_gameoverID;
     static void s_exitMenu();
+    static void s_menuToPlay();
     
     virtual void setCallbacks(const std::vector<Callback>& callbacks);
     

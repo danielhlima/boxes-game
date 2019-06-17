@@ -100,6 +100,7 @@ bool PauseState::onExit()
     InputHandler::Instance()->reset();
     TextureManager::Instance()->clearFromTextureMap("fundo_paused");
     TextureManager::Instance()->clearFromTextureMap("resume_button");
+    TextureManager::Instance()->clearFromTextureMap("main_menu_button");
     
     SoundManager::Instance()->resumeMusic();
     std::cout<<"Exiting PauseState"<<std::endl;

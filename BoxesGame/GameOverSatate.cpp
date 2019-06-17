@@ -17,6 +17,11 @@ void GameOverState::s_exitMenu()
     Game::Instance()->getStateMachine()->changeState(new MainMenuState());
 }
 
+void GameOverState::s_menuToPlay()
+{
+    Game::Instance()->getStateMachine()->changeState(new PlayState());
+}
+
 void GameOverState::update()
 {
     if(!m_gameObjects.empty())
@@ -46,6 +51,7 @@ bool GameOverState::onEnter()
 {
     m_callbacks.push_back(0);
     m_callbacks.push_back(s_exitMenu);
+    m_callbacks.push_back(s_menuToPlay);
     
     if(!TextureManager::Instance()->load("assets/game/fundo_game_over.png", "fundo_game_over", Game::Instance()->getRenderer()))
     {
@@ -57,15 +63,23 @@ bool GameOverState::onEnter()
         return false;
     }
     
+    if(!TextureManager::Instance()->load("assets/menu/menu_play.png", "play_button", Game::Instance()->getRenderer()))
+    {
+        return false;
+    }
+    
     GameObject* fundo = new NPCObject(new LoaderParams(0, 0, 1024, 768, "fundo_game_over", 1, 0, 0, 0));
     GameObject* quitButton = new MenuButton(new LoaderParams(806, 539, 200, 150, "quit_button", 1, 0, 1, 0));
+    GameObject* playButton = new MenuButton(new LoaderParams(17, 539, 200, 150, "play_button", 1, 0, 2, 0));
 
     
     m_gameObjects.push_back(fundo);
     m_gameObjects.push_back(quitButton);
+    m_gameObjects.push_back(playButton);
     
     setCallbacks(m_callbacks);
     
+    SoundManager::Instance()->stopTheMusic();
     m_loadingComplete = true;
     std::cout<<"Entering GameOverState"<<std::endl;
     return true;
