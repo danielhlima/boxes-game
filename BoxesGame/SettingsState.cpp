@@ -9,10 +9,28 @@
 #include "SettingsState.hpp"
 
 const std::string SettingsState::s_gamesettingsID = "SETTINGS";
+bool SettingsState::soundEnabled = true;
+
+GameObject* SettingsState::soundButton;
 
 void SettingsState::s_settingsToMainMenu()
 {
     Game::Instance()->getStateMachine()->popState();
+}
+
+void SettingsState::s_settingsSound()
+{
+    if(SettingsState::soundButton->getCurrentFrame()==0)
+    {
+        SettingsState::soundButton->setCurrentFrame(1);
+        SoundManager::Instance()->stopTheMusic();
+        SettingsState::soundEnabled = false;
+    }
+    else
+    {
+        SettingsState::soundEnabled = true;
+        SettingsState::soundButton->setCurrentFrame(0);
+    }
 }
 
 void SettingsState::update()
@@ -44,6 +62,7 @@ bool SettingsState::onEnter()
 {
     m_callbacks.push_back(0);
     m_callbacks.push_back(s_settingsToMainMenu);
+    m_callbacks.push_back(s_settingsSound);
     
     if(!TextureManager::Instance()->load("assets/game/fundo_game.png", "fundo_settings", Game::Instance()->getRenderer()))
     {
@@ -55,12 +74,19 @@ bool SettingsState::onEnter()
         return false;
     }
     
+    if(!TextureManager::Instance()->load("assets/menu/sound_on_off.png", "sound_button", Game::Instance()->getRenderer()))
+    {
+        return false;
+    }
+    
     GameObject* fundo = new NPCObject(new LoaderParams(0, 0, 1024, 768, "fundo_settings", 1, 0, 0, 0));
-    GameObject* playButton = new MenuButton(new LoaderParams(17, 539, 200, 150, "main_menu_button", 1, 0, 1, 0));
+    GameObject* backButton = new MenuButton(new LoaderParams(17, 539, 200, 150, "main_menu_button", 1, 0, 1, 0));
+    soundButton = new MenuButton(new LoaderParams(806, 539, 200, 150, "sound_button", 1, (soundEnabled)?0:1, 2, 0));
     
     
     m_gameObjects.push_back(fundo);
-    m_gameObjects.push_back(playButton);
+    m_gameObjects.push_back(backButton);
+    m_gameObjects.push_back(soundButton);
     
     setCallbacks(m_callbacks);
     m_loadingComplete = true;

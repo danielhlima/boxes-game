@@ -50,12 +50,14 @@ bool SoundManager::load(std::string fileName, std::string id, sound_type type)
 
 void SoundManager::playMusic(std::string id, int loop)
 {
-    Mix_PlayMusic(m_music[id], loop);
+    if(SettingsState::getSoundEnabled())
+        Mix_PlayMusic(m_music[id], loop);
 }
 
 void SoundManager::playSound(std::string id, int loop)
 {
-    Mix_PlayChannel(-1, m_sfxs[id], loop);
+    if(SettingsState::getSoundEnabled())
+        Mix_PlayChannel(-1, m_sfxs[id], loop);
 }
 
 void SoundManager::stopTheMusic()

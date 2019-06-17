@@ -17,11 +17,14 @@ MenuButton::MenuButton(const LoaderParams* pParams):GameObject(pParams)
     m_textureID = pParams->getTextureID();
     m_numFrames = pParams->getNumFrames();
     m_callbackID = pParams->getCallbackID();
+    m_currentFrame = pParams->getCurrentFrame();
 }
 
 void MenuButton::draw()
 {
-    TextureManager::Instance()->draw(m_textureID, (Uint32)m_position.getX(), (Uint32)m_position.getY(), m_width, m_height, Game::Instance()->getRenderer(), SDL_FLIP_NONE);
+//    TextureManager::Instance()->draw(m_textureID, (Uint32)m_position.getX(), (Uint32)m_position.getY(), m_width, m_height, Game::Instance()->getRenderer(), SDL_FLIP_NONE);
+    
+    TextureManager::Instance()->drawFrame(m_textureID, (Uint32)m_position.getX(), (Uint32)m_position.getY(), m_width, m_height, 0, m_currentFrame, Game::Instance()->getRenderer(), 0, 255);
 }
 
 void MenuButton::update()

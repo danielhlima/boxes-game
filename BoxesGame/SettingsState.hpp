@@ -36,14 +36,19 @@ public:
         return s_gamesettingsID;
     }
     
+    static bool getSoundEnabled() { return soundEnabled; }
+    
 private:
     
     static const std::string s_gamesettingsID;
     static void s_resumeGame();
     static void s_settingsToMainMenu();
+    static void s_settingsSound();
     
     virtual void setCallbacks(const std::vector<Callback>& callbacks);
     
     std::vector<GameObject*> m_gameObjects;
+    static GameObject* soundButton;
+    static bool soundEnabled;
 };
 

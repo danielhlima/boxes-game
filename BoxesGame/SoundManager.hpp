@@ -12,6 +12,7 @@
 #include <map>
 #include <string>
 #include <SDL2/SDL_mixer.h>
+#include "SettingsState.hpp"
 
 enum sound_type
 {
