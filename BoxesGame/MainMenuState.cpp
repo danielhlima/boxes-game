@@ -7,38 +7,26 @@
 //
 
 #include "MainMenuState.hpp"
-#include <iostream>
-#include "TextureManager.hpp"
-#include "InputHandler.hpp"
-#include "Game.hpp"
-#include "MenuButton.hpp"
-#include "NPCObject.hpp"
-#include "CreditState.hpp"
-#include "SoundManager.hpp"
-#include "PlayState.hpp"
 
 const std::string MainMenuState::s_menuID = "MENU";
 
 void MainMenuState::s_menuToPlay()
 {
-    std::cout<<"Play state"<<std::endl;
     Game::Instance()->getStateMachine()->changeState(new PlayState());
 }
 
 void MainMenuState::s_menuToSettings()
 {
-    std::cout<<"Settings state"<<std::endl;
+    Game::Instance()->getStateMachine()->pushState(new SettingsState());
 }
 
 void MainMenuState::s_menuToCredits()
 {
-    std::cout<<"Credits state"<<std::endl;
     Game::Instance()->getStateMachine()->pushState(new CreditState());
 }
 
 void MainMenuState::s_exitFromMenu()
 {
-    std::cout<<"Quit state"<<std::endl;
     Game::Instance()->quit();
 }
 

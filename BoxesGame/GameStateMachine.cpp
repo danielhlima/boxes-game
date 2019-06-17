@@ -52,12 +52,6 @@ void GameStateMachine::popState()
 
 void GameStateMachine::changeState(GameState* pState)
 {
-    
-    if(pState->getStateID() == "PLAY")
-    {
-        SoundManager::Instance()->stopTheMusic();
-    }
-    
     if(!m_gameStates.empty())
     {
         if(m_gameStates.back()->getStateID() == pState->getStateID())

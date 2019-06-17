@@ -1,53 +1,49 @@
 //
-//  MainMenuState.hpp
+//  SettingsState.hpp
 //  BoxesGame
 //
-//  Created by Daniel Lima on 14/06/19.
+//  Created by Daniel Lima on 17/06/19.
 //  Copyright © 2019 Daniel Lima. All rights reserved.
 //
 
 #pragma once
 
-#include <vector>
-#include <iostream>
 #include "MenuState.hpp"
 #include "GameObject.hpp"
-#include "SettingsState.hpp"
+#include <vector>
+#include <iostream>
 #include "TextureManager.hpp"
 #include "InputHandler.hpp"
 #include "Game.hpp"
 #include "MenuButton.hpp"
 #include "NPCObject.hpp"
-#include "CreditState.hpp"
 #include "SoundManager.hpp"
-#include "PlayState.hpp"
+#include "MainMenuState.hpp"
 
-class MainMenuState : public MenuState
+class SettingsState : public MenuState
 {
 public:
-
-    virtual ~MainMenuState(){}
-
+    
+    virtual ~SettingsState(){};
+    
     virtual void update();
     virtual void render();
     virtual bool onEnter();
     virtual bool onExit();
-
+    
     virtual std::string getStateID() const
     {
-        return s_menuID;
+        return s_gamesettingsID;
     }
-
+    
 private:
-
+    
+    static const std::string s_gamesettingsID;
+    static void s_resumeGame();
+    static void s_settingsToMainMenu();
+    
     virtual void setCallbacks(const std::vector<Callback>& callbacks);
-
-    static void s_menuToPlay();
-    static void s_exitFromMenu();
-    static void s_menuToSettings();
-    static void s_menuToCredits();
-
-    static const std::string s_menuID;
-
+    
     std::vector<GameObject*> m_gameObjects;
 };
+

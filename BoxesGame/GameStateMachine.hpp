@@ -11,7 +11,6 @@
 #include <vector>
 #include "GameState.hpp"
 #include <iostream>
-#include "SoundManager.hpp"
 
 class GameStateMachine
 {

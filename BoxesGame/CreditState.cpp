@@ -19,8 +19,7 @@ const std::string CreditState::s_menuID = "CREDITS";
 
 void CreditState::s_backToMainMenu()
 {
-    Game::Instance()->getStateMachine()->changeState(new MainMenuState());
-    std::cout<<"Back to main menu"<<std::endl;
+    Game::Instance()->getStateMachine()->popState();
 }
 
 void CreditState::update()
