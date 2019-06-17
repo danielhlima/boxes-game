@@ -22,6 +22,7 @@
 #include <algorithm>
 #include "GameOverSatate.hpp"
 #include "PauseState.hpp"
+#include "GameWinState.hpp"
 
 int const ROWS = 14;
 int const COLS = 50;
@@ -29,6 +30,7 @@ int const INITIAL_X_POSITION = 0;
 int const INITIAL_Y_POSITION = 150;
 int const INITIAL_COLUMN = 15;
 int const MAX_FRAMES_ENABLED = 5;
+int const LAST_LEVEL = 1;
 
 
 class PlayState : public PlayStateBase

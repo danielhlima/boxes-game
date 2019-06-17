@@ -119,6 +119,14 @@ bool PlayState::onExit()
     
     InputHandler::Instance()->reset();
     
+    for(int i=0; i<COLS; i++)
+    {
+        for(int j=0; j<ROWS; j++)
+        {
+            delete dynamic_cast<Box*>(matrix[j][i]);
+        }
+    }
+    
     std::cout<<"Exiting PlayState"<<std::endl;
     return true;
 }
@@ -345,9 +353,10 @@ void PlayState::verifyLevel()
     {
         level++;
         
-        if(level >= 32)
+        if(level >= LAST_LEVEL)
         {
-            //Game win
+            updating = true;
+            Game::Instance()->getStateMachine()->pushState(new GameWinState());
         }
         
         factorMultitple+=factor;

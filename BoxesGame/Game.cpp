@@ -40,7 +40,7 @@ bool Game::init()
     {
         cout<<"SDL Initialization success"<<endl;
         
-        m_pWindow = SDL_CreateWindow("The Boxes War", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024, 768, 0);
+        m_pWindow = SDL_CreateWindow("Game Boxes", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024, 768, 0);
         
         if(m_pWindow != 0)
         {

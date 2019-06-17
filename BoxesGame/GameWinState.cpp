@@ -1,28 +1,28 @@
 //
-//  GameOverSatate.cpp
+//  GameWinState.cpp
 //  BoxesGame
 //
-//  Created by Daniel Lima on 16/06/19.
+//  Created by Daniel Lima on 17/06/19.
 //  Copyright © 2019 Daniel Lima. All rights reserved.
 //
 
-#include "GameOverSatate.hpp"
+#include "GameWinState.hpp"
 
-const std::string GameOverState::s_gameoverID = "GAMEOVER";
+const std::string GameWinState::s_gamewinID = "GAMEWIN";
 
 
 
-void GameOverState::s_exitMenu()
+void GameWinState::s_exitMenu()
 {
     Game::Instance()->getStateMachine()->changeState(new MainMenuState());
 }
 
-void GameOverState::s_menuToPlay()
+void GameWinState::s_menuToPlay()
 {
     Game::Instance()->getStateMachine()->changeState(new PlayState());
 }
 
-void GameOverState::update()
+void GameWinState::update()
 {
     if(!m_gameObjects.empty())
     {
@@ -36,7 +36,7 @@ void GameOverState::update()
     }
 }
 
-void GameOverState::render()
+void GameWinState::render()
 {
     if (m_loadingComplete && !m_gameObjects.empty())
     {
@@ -47,13 +47,13 @@ void GameOverState::render()
     }
 }
 
-bool GameOverState::onEnter()
+bool GameWinState::onEnter()
 {
     m_callbacks.push_back(0);
     m_callbacks.push_back(s_exitMenu);
     m_callbacks.push_back(s_menuToPlay);
     
-    if(!TextureManager::Instance()->load("assets/game/fundo_game_over.png", "fundo_game_over", Game::Instance()->getRenderer()))
+    if(!TextureManager::Instance()->load("assets/game/fundo_game_win.png", "fundo_game_win", Game::Instance()->getRenderer()))
     {
         return false;
     }
@@ -68,10 +68,10 @@ bool GameOverState::onEnter()
         return false;
     }
     
-    GameObject* fundo = new NPCObject(new LoaderParams(0, 0, 1024, 768, "fundo_game_over", 1, 0, 0, 0));
+    GameObject* fundo = new NPCObject(new LoaderParams(0, 0, 1024, 768, "fundo_game_win", 1, 0, 0, 0));
     GameObject* quitButton = new MenuButton(new LoaderParams(806, 539, 200, 150, "quit_button", 1, 0, 1, 0));
     GameObject* playButton = new MenuButton(new LoaderParams(17, 539, 200, 150, "play_button", 1, 0, 2, 0));
-
+    
     
     m_gameObjects.push_back(fundo);
     m_gameObjects.push_back(quitButton);
@@ -80,12 +80,15 @@ bool GameOverState::onEnter()
     setCallbacks(m_callbacks);
     
     SoundManager::Instance()->stopTheMusic();
+    SoundManager::Instance()->load("assets/sounds/victory_theme.ogg", "victory_theme", SOUND_MUSIC);
+    SoundManager::Instance()->playMusic("victory_theme", 0);
+    
     m_loadingComplete = true;
-    std::cout<<"Entering GameOverState"<<std::endl;
+    std::cout<<"Entering GameWinState"<<std::endl;
     return true;
 }
 
-bool GameOverState::onExit()
+bool GameWinState::onExit()
 {
     m_exiting = true;
     
@@ -98,15 +101,15 @@ bool GameOverState::onExit()
     m_gameObjects.clear();
     
     InputHandler::Instance()->reset();
-    TextureManager::Instance()->clearFromTextureMap("fundo_game_over");
+    TextureManager::Instance()->clearFromTextureMap("fundo_game_win");
     TextureManager::Instance()->clearFromTextureMap("quit_button");
     TextureManager::Instance()->clearFromTextureMap("play_button");
     
-    std::cout<<"Exiting GameOverState"<<std::endl;
+    std::cout<<"Exiting GameWinState"<<std::endl;
     return true;
 }
 
-void GameOverState::setCallbacks(const std::vector<Callback>& callbacks)
+void GameWinState::setCallbacks(const std::vector<Callback>& callbacks)
 {
     if(!m_gameObjects.empty())
     {
