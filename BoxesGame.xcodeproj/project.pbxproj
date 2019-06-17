@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		443C6F9F22B6B7A900F8DDFA /* GameOverSatate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 443C6F9D22B6B7A900F8DDFA /* GameOverSatate.cpp */; };
 		444DD18E22B7CECD0023EB08 /* libSDL2_ttf-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 444DD18D22B7CECD0023EB08 /* libSDL2_ttf-2.0.0.dylib */; };
+		444DD19122B82C230023EB08 /* PauseState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 444DD18F22B82C230023EB08 /* PauseState.cpp */; };
 		4463DEE022B556E40017CF58 /* PlayState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4463DEDE22B556E40017CF58 /* PlayState.cpp */; };
 		4463DEE322B56BAA0017CF58 /* Box.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4463DEE122B56BAA0017CF58 /* Box.cpp */; };
 		44897E5722B3C7570090E44E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44897E5622B3C7570090E44E /* main.cpp */; };
@@ -43,6 +44,8 @@
 		443C6F9D22B6B7A900F8DDFA /* GameOverSatate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameOverSatate.cpp; sourceTree = "<group>"; };
 		443C6F9E22B6B7A900F8DDFA /* GameOverSatate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameOverSatate.hpp; sourceTree = "<group>"; };
 		444DD18D22B7CECD0023EB08 /* libSDL2_ttf-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2_ttf-2.0.0.dylib"; path = "../../../../../../usr/local/Cellar/sdl2_ttf/2.0.15/lib/libSDL2_ttf-2.0.0.dylib"; sourceTree = "<group>"; };
+		444DD18F22B82C230023EB08 /* PauseState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PauseState.cpp; sourceTree = "<group>"; };
+		444DD19022B82C230023EB08 /* PauseState.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PauseState.hpp; sourceTree = "<group>"; };
 		4463DEDC22B553F70017CF58 /* PlayStateBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayStateBase.hpp; sourceTree = "<group>"; };
 		4463DEDE22B556E40017CF58 /* PlayState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayState.cpp; sourceTree = "<group>"; };
 		4463DEDF22B556E40017CF58 /* PlayState.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayState.hpp; sourceTree = "<group>"; };
@@ -169,6 +172,8 @@
 				4463DEDF22B556E40017CF58 /* PlayState.hpp */,
 				443C6F9D22B6B7A900F8DDFA /* GameOverSatate.cpp */,
 				443C6F9E22B6B7A900F8DDFA /* GameOverSatate.hpp */,
+				444DD18F22B82C230023EB08 /* PauseState.cpp */,
+				444DD19022B82C230023EB08 /* PauseState.hpp */,
 			);
 			name = GameStates;
 			sourceTree = "<group>";
@@ -293,6 +298,7 @@
 				44D0A94422B4AFA6006B7891 /* CreditState.cpp in Sources */,
 				4463DEE322B56BAA0017CF58 /* Box.cpp in Sources */,
 				44897E7622B403350090E44E /* TextureManager.cpp in Sources */,
+				444DD19122B82C230023EB08 /* PauseState.cpp in Sources */,
 				44D0A94A22B4BA95006B7891 /* SoundManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

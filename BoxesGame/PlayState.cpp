@@ -18,10 +18,11 @@ void PlayState::update()
 {
     if(m_loadingComplete && !m_exiting)
     {
-        if(InputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE))
+        if(InputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE) ||
+           InputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE))
         {
             std::cout<<"PlayGame calling PauseState"<<std::endl;
-//            TheGame::Instance()->getStateMachine()->pushState(new PauseState());
+            Game::Instance()->getStateMachine()->pushState(new PauseState());
         }
     }
     

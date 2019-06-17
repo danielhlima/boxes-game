@@ -21,6 +21,7 @@
 #include <time.h>
 #include <algorithm>
 #include "GameOverSatate.hpp"
+#include "PauseState.hpp"
 
 int const ROWS = 14;
 int const COLS = 50;

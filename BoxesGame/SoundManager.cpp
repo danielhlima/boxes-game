@@ -63,6 +63,16 @@ void SoundManager::stopTheMusic()
     Mix_HaltMusic();
 }
 
+void SoundManager::pauseMusic()
+{
+    Mix_PauseMusic();
+}
+
+void SoundManager::resumeMusic()
+{
+    Mix_ResumeMusic();
+}
+
 void SoundManager::quit()
 {
     Mix_HaltMusic();
