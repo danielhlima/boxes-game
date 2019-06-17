@@ -27,8 +27,8 @@ int const COLS = 50;
 int const INITIAL_X_POSITION = 0;
 int const INITIAL_Y_POSITION = 150;
 int const INITIAL_COLUMN = 15;
-int const VELOCITY_MATRIX = 4000;
 int const MAX_FRAMES_ENABLED = 5;
+
 
 class PlayState : public PlayStateBase
 {
@@ -45,10 +45,15 @@ public:
     bool isUpdating() { return updating; }
     virtual std::string getStateID() const { return s_playID; }
     void verifyNeighbours(int x, int y);
+    void updateLevel();
+    
+    int getPoints() { return points; }
+    void updatePoints (int value) { points += value; }
     
     static int b_x, b_y;
     static void boxChosen(int x, int y);
     Uint32 frameStart, frameTime;
+    int factor=100, factorMultitple=100, velocity_matrix = 4000;
     
 private:
     
@@ -56,6 +61,7 @@ private:
     bool updating;
     GameObject* matrix[ROWS][COLS];
     std::vector<GameObject*> neighbours;
+    int points;
     
     bool withinGrid(int colNum, int rowNum);
     void buildMatrix();
@@ -67,4 +73,5 @@ private:
     void moveMatrix();
     void checkVoidColumn();
     void createRandomColumn();
+    void verifyLevel();
 };

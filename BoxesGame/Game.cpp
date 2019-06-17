@@ -12,6 +12,7 @@
 #include "TextureManager.hpp"
 #include "MainMenuState.hpp"
 #include "SoundManager.hpp"
+#include <SDL2/SDL_image.h>
 
 using namespace std;
 
@@ -111,8 +112,10 @@ void Game::clean()
     
     TextureManager::Instance()->clearTextureMap();
     
-    SDL_DestroyWindow(m_pWindow);
+    SoundManager::Instance()->quit();
     SDL_DestroyRenderer(m_pRenderer);
+    SDL_DestroyWindow(m_pWindow);
+    IMG_Quit();
     SDL_Quit();
 }
 

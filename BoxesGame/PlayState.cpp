@@ -70,6 +70,11 @@ bool PlayState::onEnter()
         return false;
     }
     
+    if(!TextureManager::Instance()->load("assets/game/trophy.png", "trophy", Game::Instance()->getRenderer()))
+    {
+        return false;
+    }
+    
     srand(time(0));
     
     GameObject* backgroundImage = new NPCObject(new LoaderParams(0, 0, 1024, 768, "background_game", 1, 0, 0, 0));
@@ -90,6 +95,7 @@ bool PlayState::onEnter()
     PlayState::b_x = -1;
     PlayState::b_y = -1;
     
+    level = 0;
     m_loadingComplete = true;
     updating = false;
     frameStart = SDL_GetTicks();
@@ -247,8 +253,10 @@ void PlayState::verifyNeighbours(int x, int y)
         
         if(neighbours.size() > 0)
         {
+            points+=neighbours.size();
             updateMatrix();
             checkVoidColumn();
+            verifyLevel();
         }
         PlayState::b_y = -1;
         PlayState::b_x = -1;
@@ -306,7 +314,7 @@ void PlayState::checkLimitMatrix()
 void PlayState::moveMatrix()
 {
     frameTime = SDL_GetTicks() - frameStart;
-    if(frameTime > VELOCITY_MATRIX)
+    if(frameTime > velocity_matrix)
     {
         frameStart = SDL_GetTicks();
         for(int i=0; i<COLS; i++)
@@ -328,3 +336,49 @@ void PlayState::createRandomColumn()
         matrix[i][COLS-1]->setCurrentFrame(rand() % MAX_FRAMES_ENABLED);
     }
 }
+
+void PlayState::verifyLevel()
+{
+    if(points!=0 &&
+       points >= factorMultitple)
+    {
+        level++;
+        
+        if(level >= 32)
+        {
+            //Game win
+        }
+        
+        factorMultitple+=factor;
+        if(velocity_matrix > 550)
+            velocity_matrix-=(factor+factor);
+        updateLevel();
+    }
+}
+
+void PlayState::updateLevel()
+{
+    updating = true;
+    SoundManager::Instance()->playSound("applause", 0);
+    for(int i=0; i<COLS; i++)
+    {
+        for(int j=0; j<ROWS; j++)
+        {
+            int frame = 8;
+            if(i>=INITIAL_COLUMN)
+            {
+                frame = rand() % MAX_FRAMES_ENABLED;
+            }
+            matrix[j][i]->setCurrentFrame(frame);
+        }
+    }
+    
+    int y = (level <= 16)?10:70;
+    int x = (level <= 16)?level:level-16;
+        
+    
+    GameObject* trophy = new NPCObject(new LoaderParams(x*60, y, 60, 63, "trophy", 1, 0, 0, 0));
+    m_gameObjects.push_back(trophy);
+    updating = false;
+}
+

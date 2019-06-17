@@ -21,5 +21,5 @@ protected:
     
     std::vector<GameObject*> m_gameObjects;
     
-    int Level;
+    int level;
 };
