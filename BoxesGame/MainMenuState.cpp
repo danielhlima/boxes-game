@@ -119,6 +119,8 @@ bool MainMenuState::onEnter()
     setCallbacks(m_callbacks);
 
     SoundManager::Instance()->load("assets/sounds/menu_button_sound.ogg", "menu_button", SOUND_SFX);
+    SoundManager::Instance()->load("assets/sounds/Da_Jazz_Blues.ogg", "theme1", SOUND_MUSIC);
+    SoundManager::Instance()->playMusic("theme1", -1);
 
     m_loadingComplete = true;
     std::cout<<"Entering MenuState"<<std::endl;
@@ -144,6 +146,8 @@ bool MainMenuState::onExit()
     TextureManager::Instance()->clearFromTextureMap("credits_button");
     TextureManager::Instance()->clearFromTextureMap("quit_button");
 
+    SoundManager::Instance()->stopTheMusic();
+    
     std::cout<<"Exiting MenuState"<<std::endl;
     return true;
 }

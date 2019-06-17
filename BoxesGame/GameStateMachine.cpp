@@ -64,8 +64,11 @@ void GameStateMachine::changeState(GameState* pState)
         {
             return;
         }
-        m_gameStates.back()->onExit();
-        m_gameStates.pop_back();
+        while(!m_gameStates.empty())
+        {
+            m_gameStates.back()->onExit();
+            m_gameStates.pop_back();
+        }
     }
     
     pState->onEnter();

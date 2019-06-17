@@ -18,6 +18,7 @@
 #include "MenuButton.hpp"
 #include "NPCObject.hpp"
 #include "SoundManager.hpp"
+#include "MainMenuState.hpp"
 
 class PauseState : public MenuState
 {
@@ -39,6 +40,7 @@ private:
     
     static const std::string s_gamepauseID;
     static void s_resumeGame();
+    static void s_pauseToMainMenu();
     
     virtual void setCallbacks(const std::vector<Callback>& callbacks);
     

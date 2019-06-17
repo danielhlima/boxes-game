@@ -15,6 +15,12 @@ void PauseState::s_resumeGame()
     Game::Instance()->getStateMachine()->popState();
 }
 
+void PauseState::s_pauseToMainMenu()
+{
+    std::cout<<"Play state"<<std::endl;
+    Game::Instance()->getStateMachine()->changeState(new MainMenuState());
+}
+
 void PauseState::update()
 {
     if(!m_gameObjects.empty())
@@ -44,6 +50,7 @@ bool PauseState::onEnter()
 {
     m_callbacks.push_back(0);
     m_callbacks.push_back(s_resumeGame);
+    m_callbacks.push_back(s_pauseToMainMenu);
     
     if(!TextureManager::Instance()->load("assets/game/fundo_paused.png", "fundo_paused", Game::Instance()->getRenderer()))
     {
@@ -55,12 +62,19 @@ bool PauseState::onEnter()
         return false;
     }
     
+    if(!TextureManager::Instance()->load("assets/menu/main_menu.png", "main_menu_button", Game::Instance()->getRenderer()))
+    {
+        return false;
+    }
+    
     GameObject* fundo = new NPCObject(new LoaderParams(0, 0, 1024, 768, "fundo_paused", 1, 0, 0, 0));
     GameObject* quitButton = new MenuButton(new LoaderParams(806, 539, 200, 150, "resume_button", 1, 0, 1, 0));
+    GameObject* playButton = new MenuButton(new LoaderParams(17, 539, 200, 150, "main_menu_button", 1, 0, 2, 0));
     
     
     m_gameObjects.push_back(fundo);
     m_gameObjects.push_back(quitButton);
+    m_gameObjects.push_back(playButton);
     
     setCallbacks(m_callbacks);
     

@@ -70,10 +70,7 @@ bool Game::init()
         cout<<"SDL initialization failure"<<endl;
         return false;
     }
-    
-    SoundManager::Instance()->load("assets/sounds/Da_Jazz_Blues.ogg", "theme1", SOUND_MUSIC);
-    SoundManager::Instance()->playMusic("theme1", -1);
-    
+
     m_pGameStateMachine = new GameStateMachine();
     m_pGameStateMachine->changeState(new MainMenuState());
     
