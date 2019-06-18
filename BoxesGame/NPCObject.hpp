@@ -8,6 +8,9 @@
 
 #pragma once
 #include "GameObject.hpp"
+#include "TextureManager.hpp"
+#include "Game.hpp"
+#include "InputHandler.hpp"
 
 class NPCObject : public GameObject
 {

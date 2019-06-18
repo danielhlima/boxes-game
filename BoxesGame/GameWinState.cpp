@@ -10,8 +10,6 @@
 
 const std::string GameWinState::s_gamewinID = "GAMEWIN";
 
-
-
 void GameWinState::s_exitMenu()
 {
     Game::Instance()->getStateMachine()->changeState(new MainMenuState());
@@ -84,7 +82,6 @@ bool GameWinState::onEnter()
     SoundManager::Instance()->playMusic("victory_theme", 0);
     
     m_loadingComplete = true;
-    std::cout<<"Entering GameWinState"<<std::endl;
     return true;
 }
 
@@ -105,7 +102,6 @@ bool GameWinState::onExit()
     TextureManager::Instance()->clearFromTextureMap("quit_button");
     TextureManager::Instance()->clearFromTextureMap("play_button");
     
-    std::cout<<"Exiting GameWinState"<<std::endl;
     return true;
 }
 

@@ -72,6 +72,7 @@ bool GameOverState::onEnter()
     GameObject* quitButton = new MenuButton(new LoaderParams(806, 539, 200, 150, "quit_button", 1, 0, 1, 0));
     GameObject* playButton = new MenuButton(new LoaderParams(17, 539, 200, 150, "play_button", 1, 0, 2, 0));
 
+    SoundManager::Instance()->load("assets/sounds/game_over.ogg", "game_over", SOUND_SFX);
     
     m_gameObjects.push_back(fundo);
     m_gameObjects.push_back(quitButton);
@@ -80,8 +81,8 @@ bool GameOverState::onEnter()
     setCallbacks(m_callbacks);
     
     SoundManager::Instance()->stopTheMusic();
+    SoundManager::Instance()->playSound("game_over", 0);
     m_loadingComplete = true;
-    std::cout<<"Entering GameOverState"<<std::endl;
     return true;
 }
 
@@ -102,7 +103,6 @@ bool GameOverState::onExit()
     TextureManager::Instance()->clearFromTextureMap("quit_button");
     TextureManager::Instance()->clearFromTextureMap("play_button");
     
-    std::cout<<"Exiting GameOverState"<<std::endl;
     return true;
 }
 

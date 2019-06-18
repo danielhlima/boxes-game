@@ -10,6 +10,9 @@
 
 #include "GameObject.hpp"
 #include "PlayState.hpp"
+#include "TextureManager.hpp"
+#include "Game.hpp"
+#include "InputHandler.hpp"
 
 class Box : public GameObject
 {

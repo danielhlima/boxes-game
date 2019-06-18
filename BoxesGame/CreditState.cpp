@@ -7,13 +7,7 @@
 //
 
 #include "CreditState.hpp"
-#include <iostream>
-#include "TextureManager.hpp"
-#include "InputHandler.hpp"
-#include "Game.hpp"
-#include "MenuButton.hpp"
-#include "NPCObject.hpp"
-#include "MainMenuState.hpp"
+
 
 const std::string CreditState::s_menuID = "CREDITS";
 
@@ -73,7 +67,6 @@ bool CreditState::onEnter()
     setCallbacks(m_callbacks);
     
     m_loadingComplete = true;
-    std::cout<<"Entering CreditState"<<std::endl;
     return true;
 }
 
@@ -90,19 +83,15 @@ bool CreditState::onExit()
     m_gameObjects.clear();
     
     InputHandler::Instance()->reset();
-    
-    std::cout<<"Exiting CreditState"<<std::endl;
     return true;
 }
 
 void CreditState::setCallbacks(const std::vector<Callback>& callbacks)
 {
-    // go through the game objects
     if(!m_gameObjects.empty())
     {
         for(int i = 0; i < m_gameObjects.size(); i++)
         {
-            // if they are of type MenuButton then assign a callback based on the id passed in from the file
             if(dynamic_cast<MenuButton*>(m_gameObjects[i]))
             {
                 MenuButton* pButton = dynamic_cast<MenuButton*>(m_gameObjects[i]);

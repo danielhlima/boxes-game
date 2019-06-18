@@ -17,7 +17,6 @@ void PauseState::s_resumeGame()
 
 void PauseState::s_pauseToMainMenu()
 {
-    std::cout<<"Play state"<<std::endl;
     Game::Instance()->getStateMachine()->changeState(new MainMenuState());
 }
 
@@ -81,7 +80,6 @@ bool PauseState::onEnter()
     SoundManager::Instance()->pauseMusic();
     
     m_loadingComplete = true;
-    std::cout<<"Entering PauseState"<<std::endl;
     return true;
 }
 
@@ -103,7 +101,6 @@ bool PauseState::onExit()
     TextureManager::Instance()->clearFromTextureMap("main_menu_button");
     
     SoundManager::Instance()->resumeMusic();
-    std::cout<<"Exiting PauseState"<<std::endl;
     return true;
 }
 

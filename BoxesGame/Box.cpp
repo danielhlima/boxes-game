@@ -7,9 +7,6 @@
 //
 
 #include "Box.hpp"
-#include "TextureManager.hpp"
-#include "Game.hpp"
-#include "InputHandler.hpp"
 
 Box::Box(const LoaderParams* pParams):GameObject(pParams)
 {

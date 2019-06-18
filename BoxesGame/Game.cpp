@@ -101,8 +101,6 @@ void Game::clean()
 {
     cout<<"Cleaning the game"<<endl;
 
-    
-    
     m_pGameStateMachine->clean();
     m_pGameStateMachine = NULL;
     delete m_pGameStateMachine;

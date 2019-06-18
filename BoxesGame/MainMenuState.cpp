@@ -111,7 +111,7 @@ bool MainMenuState::onEnter()
     SoundManager::Instance()->playMusic("theme1", -1);
 
     m_loadingComplete = true;
-    std::cout<<"Entering MenuState"<<std::endl;
+    
     return true;
 }
 
@@ -136,7 +136,6 @@ bool MainMenuState::onExit()
 
     SoundManager::Instance()->stopTheMusic();
     
-    std::cout<<"Exiting MenuState"<<std::endl;
     return true;
 }
 

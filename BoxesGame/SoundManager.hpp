@@ -41,6 +41,7 @@ public:
     void stopTheMusic();
     void pauseMusic();
     void resumeMusic();
+    bool isPlaying();
     void quit();
     
 private:

@@ -30,6 +30,7 @@ void SettingsState::s_settingsSound()
     {
         SettingsState::soundEnabled = true;
         SettingsState::soundButton->setCurrentFrame(0);
+        SoundManager::Instance()->playMusic("theme1", -1);
     }
 }
 

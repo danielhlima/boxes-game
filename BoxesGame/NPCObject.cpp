@@ -7,9 +7,7 @@
 //
 
 #include "NPCObject.hpp"
-#include "TextureManager.hpp"
-#include "Game.hpp"
-#include "InputHandler.hpp"
+
 
 NPCObject::NPCObject(const LoaderParams* pParams):GameObject(pParams)
 {

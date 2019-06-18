@@ -21,7 +21,6 @@ void PlayState::update()
         if(InputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE) ||
            InputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE))
         {
-            std::cout<<"PlayGame calling PauseState"<<std::endl;
             Game::Instance()->getStateMachine()->pushState(new PauseState());
         }
     }
@@ -100,8 +99,6 @@ bool PlayState::onEnter()
     m_loadingComplete = true;
     updating = false;
     frameStart = SDL_GetTicks();
-    std::cout<<"Entering PlayState"<<std::endl;
-    
     return true;
 }
 
@@ -127,7 +124,6 @@ bool PlayState::onExit()
         }
     }
     
-    std::cout<<"Exiting PlayState"<<std::endl;
     return true;
 }
 

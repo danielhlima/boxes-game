@@ -49,9 +49,9 @@
 		444DD19022B82C230023EB08 /* PauseState.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PauseState.hpp; sourceTree = "<group>"; };
 		444DD19222B8478D0023EB08 /* GameWinState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameWinState.cpp; sourceTree = "<group>"; };
 		444DD19322B8478D0023EB08 /* GameWinState.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameWinState.hpp; sourceTree = "<group>"; };
-		444DD19522B847B70023EB08 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		444DD19622B851310023EB08 /* SettingsState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SettingsState.cpp; sourceTree = "<group>"; };
 		444DD19722B851310023EB08 /* SettingsState.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SettingsState.hpp; sourceTree = "<group>"; };
+		444DD19A22B867620023EB08 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		4463DEDC22B553F70017CF58 /* PlayStateBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayStateBase.hpp; sourceTree = "<group>"; };
 		4463DEDE22B556E40017CF58 /* PlayState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayState.cpp; sourceTree = "<group>"; };
 		4463DEDF22B556E40017CF58 /* PlayState.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayState.hpp; sourceTree = "<group>"; };
@@ -105,7 +105,7 @@
 		443C6F9822B6AF6600F8DDFA /* GameAssets */ = {
 			isa = PBXGroup;
 			children = (
-				444DD19522B847B70023EB08 /* assets */,
+				444DD19A22B867620023EB08 /* assets */,
 			);
 			name = GameAssets;
 			sourceTree = "<group>";

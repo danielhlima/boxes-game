@@ -9,8 +9,15 @@
 #pragma once
 
 #include <vector>
+#include <iostream>
 #include "MenuState.hpp"
+#include "MainMenuState.hpp"
+#include "MenuButton.hpp"
 #include "GameObject.hpp"
+#include "TextureManager.hpp"
+#include "InputHandler.hpp"
+#include "Game.hpp"
+#include "NPCObject.hpp"
 
 class CreditState : public MenuState
 {
