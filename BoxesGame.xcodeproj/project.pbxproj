@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		443C6F9F22B6B7A900F8DDFA /* GameOverSatate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 443C6F9D22B6B7A900F8DDFA /* GameOverSatate.cpp */; };
-		444DD18E22B7CECD0023EB08 /* libSDL2_ttf-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 444DD18D22B7CECD0023EB08 /* libSDL2_ttf-2.0.0.dylib */; };
 		444DD19122B82C230023EB08 /* PauseState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 444DD18F22B82C230023EB08 /* PauseState.cpp */; };
 		444DD19422B8478D0023EB08 /* GameWinState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 444DD19222B8478D0023EB08 /* GameWinState.cpp */; };
 		444DD19822B851310023EB08 /* SettingsState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 444DD19622B851310023EB08 /* SettingsState.cpp */; };
@@ -92,7 +91,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				444DD18E22B7CECD0023EB08 /* libSDL2_ttf-2.0.0.dylib in Frameworks */,
 				44D0A94622B4B905006B7891 /* libSDL2_mixer-2.0.0.dylib in Frameworks */,
 				44897E7822B40B890090E44E /* libSDL2_image-2.0.0.dylib in Frameworks */,
 				44897E5F22B3C7990090E44E /* libSDL2-2.0.0.dylib in Frameworks */,
@@ -416,7 +414,6 @@
 					/usr/local/Cellar/sdl2/2.0.9_1/lib,
 					/usr/local/Cellar/sdl2_image/2.0.4/lib,
 					/usr/local/Cellar/sdl2_mixer/2.0.4/lib,
-					/usr/local/Cellar/sdl2_ttf/2.0.15/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -431,7 +428,6 @@
 					/usr/local/Cellar/sdl2/2.0.9_1/lib,
 					/usr/local/Cellar/sdl2_image/2.0.4/lib,
 					/usr/local/Cellar/sdl2_mixer/2.0.4/lib,
-					/usr/local/Cellar/sdl2_ttf/2.0.15/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
